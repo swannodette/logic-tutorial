@@ -106,9 +106,9 @@ tut1=>(run* [q] (likes 'Bob q))
 (Mary)
 ```
 
-We can now ask who likes who! Let’s try this:
+We can now ask who likes who! Let's try this:
 
-```s
+```clj
 tut1=>(run* [q] (likes 'Mary q))
 ()
 ```
