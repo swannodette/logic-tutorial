@@ -16,13 +16,13 @@ user=>(require "clojure.core.logic.minikanren)
 
 The REPL should print nil and it should return control to you. If it doesn’t file an issue for this tutorial and I’ll look into it. If all goes well run the following:
 
-```sh
+```console
 user=>(load "logic_tutorial/tut1")
 ```
 
 You’ll see some harmless warning, then run the following:
 
-```sh
+```console
 user=>(in-ns 'logic-tutorial.tut1)
 ```
 
@@ -33,14 +33,14 @@ Baby Steps
 
 Unlike most programming systems, with relational programming we can actually ask the computer questions. But before we ask the computer questions, we need define some facts! The first thing we want the computer to know about is that there are men:
 
-```sh
+```console
 tut1=>(defrel man x)
 #'logic-tutorial.tutorial1/man
 ```
 
 And then we want to define some men:
 
-```sh
+```console
 tut1=>(fact man 'Bob)
 nil
 tut1=>(fact man 'John)
@@ -49,28 +49,28 @@ nil
 
 No we can ask who are men. First we have to formulate a question and then tell the computer we want the computer to find answers to our question:
 
-```sh
+```console
 tut1=> (run 1 [q] (man q))
 (John)
 ```
 
 We’re asking the computer to give us at least one answer to the question - “Who is a man?”.  We can ask for more than one answer:
 
-```sh
+```console
 tut1=>(run 2 [q] (man q))
 (John Bob)
 ```
 
 Now that is pretty cool. What happens if we ask for more answers?
 
-```sh
+```console
 tut1=>(run 3 [q] (man q))
 (John Bob)
 ```
 
 The same result. That’s because we’ve only told the computer that two men exist in the world. It can’t give results for things it doesn’t know about. Let’s define another kind of relationship and a fact:
 
-```sh
+```console
 tut1=>(defrel fun x)
 #'logic-tutorial.tutorial1/fun
 tut1=>(fact fun 'Bob)
@@ -84,7 +84,7 @@ tut1=>(run* [q] (man q) (fun q))
 
 There’s a couple of new things going on here. We’re asking who is both a man and who is fun. Now this getting interesting. Enter in the following:
 
-```sh
+```console
 tut1=>(defrel woman x)
 #’logic-tutorial.tutorial1/woman
 tut1=>(fact woman 'Lucy)
@@ -97,7 +97,7 @@ tut1=>(defrel likes x y)
 
 Relations don’t have to be a about a single entity. We can define relationship between things!
 
-```sh
+```console
 tut1=>(fact likes 'Bob 'Mary)
 nil
 tut1=>(fact likes 'John 'Lucy)
@@ -115,7 +115,7 @@ tut1=>(run* [q] (likes 'Mary q))
 
 Hmm that doesn’t work. This is because we never actually said who Mary liked, only that Bob liked Mary:
 
-```sh
+```console
 tut1=>(fact likes 'Mary 'Bob)
 nil
 tut1=>(run* [q] (exist [x y] (== q [x y]) (likes x y) ))
@@ -126,7 +126,7 @@ Wow that’s a lot of new information. The exist expression isn’t something we
 
 I’ve done a lot of lying in the last paragraph. Run the following:
 
-```sh
+```console
 tut1=>(run* [q] (exist [x y] (likes x y) (== q [x y])))
 ([Bob Mary] [John Lucy])
 ```
@@ -138,7 +138,7 @@ Genealogy
 
 We’ve actually defined some interesting relations in this namespace that we’ll use before we take a closer look at them:
 
-```sh
+```console
 tut1=>(fact parent 'John 'Bobby)
 nil
 tut1=>(fact male 'Bobby)
@@ -147,14 +147,14 @@ nil
 
 We can now run this query:
 
-```sh
+```console
 tut1=>(run* [q] (son q 'John))
 (Bobby)
 ```
 
 Let’s add another fact:
 
-```sh
+```console
 tut1=>(fact parent 'George 'John) 
 nil
 tut1=>(run* [q] (grandparent q 'Bobby))
