@@ -8,10 +8,10 @@ First things first, install Leiningen or Cake. Then clone this repository and sw
 Getting Started
 ____
 
-Ok, we’re ready to being. Type lein repl or cake repl, this will drop you into the Clojure prompt. Enter the following at the Clojure REPL:
+Ok, we’re ready to being. Type lein repl or cake repl, this will drop you into the Clojure prompt. First lets double check that everything went ok. Enter the following at the Clojure REPL:
 
 ```clj
-user=>(require "clojure.core.logic.minikanren)
+user=>(require 'clojure.core.logic.minikanren)
 ```
 
 The REPL should print nil and it should return control to you. If it doesn’t file an issue for this tutorial and I’ll look into it. If all goes well run the following:
@@ -86,13 +86,13 @@ There’s a couple of new things going on here. We’re asking who is both a man
 
 ```clj
 tut1=>(defrel woman x)
-#’logic-tutorial.tutorial1/woman
+#'logic-tutorial.tutorial1/woman
 tut1=>(fact woman 'Lucy)
 nil
 tut1=>(fact woman 'Mary)
 nil
 tut1=>(defrel likes x y)
-#’logic-tutorial.tutorial1/likes
+#'logic-tutorial.tutorial1/likes
 ```
 
 Relations don’t have to be a about a single entity. We can define relationship between things!
