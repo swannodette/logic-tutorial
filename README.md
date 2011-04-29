@@ -3,7 +3,7 @@ A Very Gentle Introduction To Relational Programming
 
 This tutorial will guide you through the magic and fun of relational programming. This tutorial does not assume that you have any knowledge of Lisp, Clojure, Java, or even Functional Programming. The only thing this tutorial assumes is that you are not afraid of using the command line and you’ve used some programming language before in your life. Since you’re using GitHub I think this is a relatively safe assumption :)
 
-First things first, install Leiningen or Cake. Then clone this repository and switch into its directory. Once you’ve done that, run lein deps or cake deps. This will grab all of the dependencies needed for this tutorial.
+First things first, install Leiningen or Cake. Then clone this repository and switch into its directory. Once you’ve done that, run <code>lein deps</code> or <code>cake deps</code>. This will grab all of the dependencies needed for this tutorial.
 
 Getting Started
 ____
