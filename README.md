@@ -10,7 +10,7 @@ ____
 
 Ok, we’re ready to being. Type lein repl or cake repl, this will drop you into the Clojure prompt. Enter the following at the Clojure REPL:
 
-```sh
+```console
 user=>(require "clojure.core.logic.minikanren)
 ```
 
