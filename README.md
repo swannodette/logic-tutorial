@@ -79,8 +79,10 @@ nil
 
 Let’s ask a new kind of question:
 
+```clj
 tut1=>(run* [q] (man q) (fun q))
 (Bob)
+```
 
 There’s a couple of new things going on here. We’re asking who is both a man and who is fun. Now this getting interesting. Enter in the following:
 
