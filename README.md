@@ -109,7 +109,7 @@ tut1=>(run* [q] (likes 'Bob q))
 We can now ask who likes who! Let’s try this:
 
 ```s
-tut1=>(run* [q] (likes ‘Mary q))
+tut1=>(run* [q] (likes 'Mary q))
 ()
 ```
 
@@ -132,6 +132,9 @@ tut1=>(run* [q] (exist [x y] (likes x y) (== q [x y])))
 ```
 
 Note that the order doesn’t not matter. We can call the like relation and then assign them to q or we can assign to q and call the like relation. But really this isn’t assigment. This is a fairly powerful notion called unification.
+
+Genealogy
+----
 
 We’ve actually defined some interesting relations in this namespace that we’ll use before we take a closer look at them:
 
@@ -164,4 +167,19 @@ Let’s take a moment to look at what’s in the file.
 
 By now we’re tired of genealogy. Let’s go back to the cozy world of Computer Science. One of the very first things people introduce in CS are arrays and/or lists. It’s often convenient to take two lists and join them together. We’ll definie a relational function that does this for us.
 
+Magic Tricks
+----
+
 There’s actually a short hand for writing appendo, we can write it like this. This is pattern matching - it can decrease the amount of boiler plate we have to write for many programs.
+
+Next Steps
+----
+
+Hopefully this short tutorial has shown the beauty of relational programming. To be sure, relational programming as I've presented here has it's limitations. However, people are actively working on surmounting those limitations in more ways than I have time to document here. The world of logic programming is vast and magical and applications are far-reaching.
+
+While you can get along just fine without relational programming, many aspects of the tools we use today will seem magical without a basic understanding how relational programming works. The elegants type systems to found in Standard ML and Haskell are but one example. Automated Theorem proving is yet another. The algorithms that help layout the processor inside your computer today is constructed on decades of research on solving what amount to complex logic programs.
+
+The Reasoned Schemer
+Paradigms of Artificial Intelligence
+Prolog For Artificial Intelligence
+Concepts, Techniques, and Models of Computer Programming
