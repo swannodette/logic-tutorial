@@ -6,9 +6,9 @@ This tutorial will guide you through the magic and fun of relational programming
 First things first, install Leiningen or Cake. Then clone this repository and switch into its directory. Once you’ve done that, run <code>lein deps</code> or <code>cake deps</code>. This will grab all of the dependencies needed for this tutorial.
 
 Getting Started
-____
+----
 
-Ok, we’re ready to being. Type lein repl or cake repl, this will drop you into the Clojure prompt. First lets double check that everything went ok. Enter the following at the Clojure REPL:
+Ok, we’re ready to being. Type <code>lein repl</code> or <code>cake repl</code>, this will drop you into the Clojure prompt. First lets double check that everything went ok. Enter the following at the Clojure REPL:
 
 ```clj
 user=> (require 'clojure.core.logic.minikanren)
