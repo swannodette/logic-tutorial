@@ -35,7 +35,7 @@ Unlike most programming systems, with relational programming we can actually ask
 
 ```clj
 tut1=>(defrel man x)
-#'logic-tutorial.tutorial1/man
+#'tut1/man
 ```
 
 And then we want to define some men:
@@ -72,7 +72,7 @@ The same result. That’s because we’ve only told the computer that two men ex
 
 ```clj
 tut1=>(defrel fun x)
-#'logic-tutorial.tutorial1/fun
+#'tut1/fun
 tut1=>(fact fun 'Bob)
 nil
 ```
@@ -86,13 +86,13 @@ There’s a couple of new things going on here. We’re asking who is both a man
 
 ```clj
 tut1=>(defrel woman x)
-#'logic-tutorial.tutorial1/woman
+#'tut1/woman
 tut1=>(fact woman 'Lucy)
 nil
 tut1=>(fact woman 'Mary)
 nil
 tut1=>(defrel likes x y)
-#'logic-tutorial.tutorial1/likes
+#'tut1/likes
 ```
 
 Relations don’t have to be a about a single entity. We can define relationship between things!
