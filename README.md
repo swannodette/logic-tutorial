@@ -23,7 +23,7 @@ user=>(load "logic_tutorial/tut1")
 You’ll see some harmless warning, then run the following:
 
 ```sh
-(in-ns 'logic-tutorial.tut1)
+user=>(in-ns 'logic-tutorial.tut1)
 ```
 
 Your prompt will change and you’re now working in a place that has the magic of logic programming available to you. It will show logic-tutorial.tut1, we're going show tut1 to keep things a bit more readable.
@@ -41,9 +41,9 @@ tut1=>(defrel man x)
 And then we want to define some men:
 
 ```sh
-tut1=>(fact man ‘Bob)
+tut1=>(fact man 'Bob)
 nil
-tut1=>(fact man ‘John)
+tut1=>(fact man 'John)
 nil
 ```
 
@@ -73,7 +73,7 @@ The same result. That’s because we’ve only told the computer that two men ex
 ```sh
 tut1=>(defrel fun x)
 #'logic-tutorial.tutorial1/fun
-tut1=>(fact fun ‘Bob)
+tut1=>(fact fun 'Bob)
 nil
 ```
 
@@ -87,9 +87,9 @@ There’s a couple of new things going on here. We’re asking who is both a man
 ```sh
 tut1=>(defrel woman x)
 #’logic-tutorial.tutorial1/woman
-tut1=>(fact woman ‘Lucy)
+tut1=>(fact woman 'Lucy)
 nil
-tut1=>(fact woman ‘Mary)
+tut1=>(fact woman 'Mary)
 nil
 tut1=>(defrel likes x y)
 #’logic-tutorial.tutorial1/likes
@@ -98,11 +98,11 @@ tut1=>(defrel likes x y)
 Relations don’t have to be a about a single entity. We can define relationship between things!
 
 ```sh
-tut1=>(fact likes ‘Bob ‘Mary)
+tut1=>(fact likes 'Bob 'Mary)
 nil
-tut1=>(fact likes ‘John ‘Lucy)
+tut1=>(fact likes 'John 'Lucy)
 nil
-tut1=>(run* [q] (likes ‘Bob q))
+tut1=>(run* [q] (likes 'Bob q))
 (Mary)
 ```
 
@@ -116,7 +116,7 @@ tut1=>(run* [q] (likes ‘Mary q))
 Hmm that doesn’t work. This is because we never actually said who Mary liked, only that Bob liked Mary:
 
 ```sh
-tut1=>(fact likes ‘Mary ‘Bob)
+tut1=>(fact likes 'Mary 'Bob)
 nil
 tut1=>(run* [q] (exist [x y] (== q [x y]) (likes x y) ))
 ([Bob Mary] [John Lucy])
@@ -138,7 +138,7 @@ We’ve actually defined some interesting relations in this namespace that we’
 ```sh
 tut1=>(fact parent 'John 'Bobby)
 nil
-tut1=>(fact male ‘Bobby)
+tut1=>(fact male 'Bobby)
 nil
 ```
 
