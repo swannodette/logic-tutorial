@@ -68,28 +68,28 @@ tut1=> (fact man 'John)
 nil
 ```
 
-No we can ask who are men. First we have to formulate a question and then tell the computer we want the computer to find answers to our question:
+Now we can ask who are men. First we have to formulate a question and then tell the computer we want the computer to find answers to our question. Questions are always asked with <code>run</code> or <code>run*</code>. By convention we'll declare a logic variable <code>q</code> and ask the computer to give use the possible values for <code>q</code>. Here's an example.
 
 ```clj
 tut1=>  (run 1 [q] (man q))
 (John)
 ```
 
-We’re asking the computer to give us at least one answer to the question - “Who is a man?”.  We can ask for more than one answer:
+We're asking the computer to give us at least one answer to the question - "Who is a man?".  We can ask for more than one answer:
 
 ```clj
 tut1=> (run 2 [q] (man q))
 (John Bob)
 ```
 
-Now that is pretty cool. What happens if we ask for more answers?
+Now that is pretty cool. What happens if we ask for even more answers?
 
 ```clj
 tut1=> (run 3 [q] (man q))
 (John Bob)
 ```
 
-The same result. That’s because we’ve only told the computer that two men exist in the world. It can’t give results for things it doesn’t know about. Let’s define another kind of relationship and a fact:
+The same result. That's because we’ve only told the computer that two men exist in the world. It can't give results for things it doesn't know about. Let's define another kind of relationship and a fact:
 
 ```clj
 tut1=> (defrel fun x)
@@ -105,7 +105,7 @@ tut1=> (run* [q] (man q) (fun q))
 (Bob)
 ```
 
-There’s a couple of new things going on here. We’re asking who is both a man and who is fun. Now this getting interesting. Enter in the following:
+There's a couple of new things going on here. We use <code>run*</code>. This simply means we want all the answers the computer can find. The question itself is formulate slightly differently than before because we're asking who is a man *and* is fun. Now this getting interesting. Enter in the following:
 
 ```clj
 tut1=> (defrel woman x)
@@ -118,7 +118,7 @@ tut1=> (defrel likes x y)
 #'tut1/likes
 ```
 
-Relations don’t have to be a about a single entity. We can define relationship between things!
+Relations don't have to be a about a single entity. We can define relationship between things!
 
 ```clj
 tut1=> (fact likes 'Bob 'Mary)
@@ -136,13 +136,14 @@ tut1=> (run* [q] (likes 'Mary q))
 ()
 ```
 
-Hmm that doesn’t work. This is because we never actually said who Mary liked, only that Bob liked Mary:
+Hmm that doesn't work. This is because we never actually said who *Mary liked*, only that Bob liked Mary:
 
 ```clj
 tut1=> (fact likes 'Mary 'Bob)
 nil
-tut1=> (run* [q] (exist [x y] (== q [x y]) (likes x y) ))
+tut1=> (run* [q] (exist [x y] (== q [x y]) (likes x y)))
 ([Bob Mary] [John Lucy])
+tut1=> (run* [q] (exist [x y] (likes x y) (likes y x) (== q [x y])))
 ```
 
 Wow that’s a lot of new information. The exist expression isn’t something we’ve seen before. Why do we need it? That’s because by convention run returns single values. In this case we want to know who like who. This means we need to create to logic variables to store these values in. We then assign both these values to q.
