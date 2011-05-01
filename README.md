@@ -15,9 +15,9 @@ However, I admit, the most important reason to learn the relational paradigm is 
 For the Skeptics
 ----
 
-What about real world applications? There are certainly many domains where the relational programming paradigm can save a lot of time and headache - planning, scheduling, theorem proving, declarative networking are a few. Admittedly these are somewhat sophisticated use cases. Yet, there some very practical areas today for which **core.logic** is already or potentially useful for.
+What about real world applications? There are certainly many domains where the relational programming paradigm can save a lot of time and headache - planning, scheduling, theorem proving, declarative networking are a few. Admittedly these are somewhat sophisticated use cases. What about uses cases that can help us day in and day out?
 
-For example, have you ever wondered how a type checker and/or type inferencer works? Relational programming. Have you ever wondered why generic methods in programming languages aren't more *generic*? Again relational programming can help. Have you ever wondered why pattern matching in Standard ML, OCaml, Haskell, and Scala are so broken? Again relational programming can be used to solve these inadequacies.
+Have you ever wished a dynamic programming language offered optional type checking? Type checkers and type inferencers are relational programs. Have you ever wondered why generic methods in programming languages aren't more *generic*? Again relational programming can help. Have you ever wondered why pattern matching in Standard ML, OCaml, Haskell, and Scala are so broken? Again relational programming can be used to solve these inadequacies.
 
 Still not convinced? Well go try out some other tutorial then!
 
@@ -41,7 +41,7 @@ The REPL should print nil and it should return control to you. If it doesn't fil
 user=> (load "logic_tutorial/tut1")
 ```
 
-You'll see some harmless warning, then run the following:
+You'll see some harmless warnings, then run the following:
 
 ```clj
 user=> (in-ns 'logic-tutorial.tut1)
@@ -68,7 +68,7 @@ tut1=> (fact man 'John)
 nil
 ```
 
-Now we can ask who are men. First we have to formulate a question and then tell the computer we want the computer to find answers to our question. Questions are always asked with <code>run</code> or <code>run*</code>. By convention we'll declare a logic variable <code>q</code> and ask the computer to give use the possible values for <code>q</code>. Here's an example.
+Now we can ask who are men. Questions are always asked with <code>run</code> or <code>run*</code>. By convention we'll declare a logic variable <code>q</code> and ask the computer to give use the possible values for <code>q</code>. Here's an example.
 
 ```clj
 tut1=>  (run 1 [q] (man q))
