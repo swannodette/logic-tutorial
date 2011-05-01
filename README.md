@@ -218,18 +218,43 @@ After this there are some functions:
 
 We can define relations as functions! Play around with defining some new facts and using these relations to pose questions about these facts. If you're feeling particularly adventurous, write a new relation and use it
 
+Unification
+----
+
+Earlier I lied about assignment when using the <code>==</code> operator. The <code>==</code> operator means that we want to unify two terms. All this means is that want the computer to take two things and attempt to make them equal. If logic variables occur in any of the terms, the computer will try to bind that logic variable to value. If the computer can't make two terms, it fails - this is why sometimes we don't see any results.
+
+Consider the following:
+
+```clj
+tut1=> (run* [q] (== 5 5))
+(_.0)
+```
+
+Whoa, what does that mean? It means that our question was fine, but that we never actually unified <code>q</code> with anything - <code>_.0</code> just means we have a logic variable that was never bound to a concrete value.
+
+```clj
+tut1=> (run* [q] (== 5 4))
+()
+```
+
+It's impossible to make 5 and 4 equal to each other, the computer lets us know that no successful answers exist for the question we posed.
+
+```clj
+tut1=> (run* [q] (== q 5) (== q 5))
+(5)
+tut1=> (run* [q] (== q 5) (== q 4))
+()
+```
+
+Once we've unified a logic variable to a concrete value we can unify it again with that value, but we cannot unify with a concrete value that is not equal to what it is currently bound to.
+
+Magic Tricks
+----
+
 By now we're tired of genealogy. Let's go back to the cozy world of Computer Science. One of the very first things people introduce in CS are arrays and/or lists. It’s often convenient to take two lists and join them together. We’ll definie a relational function that does this for us.
 
 ```clj
 ```
-
-Unification
-----
-
-Let's slow down a moment to look at what unification really means. Unification tries to take two things and bring them together. If it can't do so it, it fails - this is why sometimes we don't see any results. Another key thing about unification is that once a logic variable has been bound to a ground value - that is it's been unified with something that is not a variable - attempting to unify with a unequal value will also cause failure.
-
-Magic Tricks
-----
 
 There’s actually a short hand for writing appendo, we can write it like this. This is pattern matching - it can decrease the amount of boiler plate we have to write for many programs.
 
