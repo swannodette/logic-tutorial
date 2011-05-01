@@ -398,11 +398,16 @@ On my machine, after the JVM has had time to warm up, I see the puzzle can be so
 Next Steps
 ----
 
-Hopefully this short tutorial has shown the beauty of relational programming. To be sure, relational programming as I've presented here has it's limitations. However, people are actively working on surmounting those limitations in more ways than I have time to document here. The world of logic programming is vast and magical and applications are far-reaching.
+Hopefully this short tutorial has revealed some of the beauty of relational programming. To be sure, relational programming as I've presented here has its limitations. Yet, people are actively working on surmounting those limitations in more ways than I really have time to document here.
 
-While you can get along just fine without relational programming, many aspects of the tools we use today will seem magical without a basic understanding how relational programming works. The elegants type systems to found in Standard ML and Haskell are but one example. Automated Theorem proving is yet another. The algorithms that help layout the processor inside your computer today is constructed on decades of research on solving what amount to complex logic programs.
+While you can get along just fine as a programmer without using relational programming, many aspects of the tools we use today will seem mysterious without a basic understanding how relational programming works. It also allows to add features to our languages that are otherwise harder to implement. For example the elegant type systems (and type inferencing) found in Standard ML and Haskell would be fascinating to model via **core.logic**. I also think that a efficient predicate dispatch system that gives ML pattern matching performance with the open-ended nature of CLOS generic methods would be easily achievable via **core.logic**.
 
-The Reasoned Schemer
-Paradigms of Artificial Intelligence
-Prolog For Artificial Intelligence
-Concepts, Techniques, and Models of Computer Programming
+Resources
+---
+
+If you found this tutorial interesting and would like to learn more I recommend the following books to further you understanding of the relational paradigm.
+
+* [The Reasoned Schemer](http://mitpress.mit.edu/catalog/item/default.asp?ttype=2&tid=10663)
+* [Paradigms of Artificial Intelligence Programming](http://norvig.com/paip.html)
+* [Prolog Programming For Artificial Intelligence](http://www.amazon.com/Prolog-Programming-Artificial-Intelligence-Bratko/dp/0201403757)
+* [Concepts, Techniques, and Models of Computer Programming](http://www.info.ucl.ac.be/~pvr/book.html)
