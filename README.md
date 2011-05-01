@@ -17,11 +17,7 @@ For the Skeptics
 
 What about real world applications? There are certainly many domains where the relational programming paradigm can save a lot of time and headache - planning, scheduling, theorem proving, declarative networking are a few. However, there some practical areas today for which **core.logic** is already useful for and that are being actively investigated.
 
-Ever wondered how a type checker and type interferencer works? Relational programming.
-
-Ever wondered why generic methods in programming languages aren't more *generic*? Again relational programming can help
-
-Ever wondered why pattern matching in Standard ML, OCaml, Haskell, and Scala are so broken? Again relational programming can be used to solve these inadequacies.
+Ever wondered how a type checker and type interferencer works? Relational programming. Ever wondered why generic methods in programming languages aren't more *generic*? Again relational programming can help. Ever wondered why pattern matching in Standard ML, OCaml, Haskell, and Scala are so broken? Again relational programming can be used to solve these inadequacies.
 
 Still not convinced? Well go try out some other tutorial then!
 
