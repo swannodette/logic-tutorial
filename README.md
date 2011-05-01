@@ -216,7 +216,12 @@ After this there are some functions:
     (female x)))
 ```
 
-We can define relations as functions! Play around with defining some new facts and using these relations to pose questions about these facts. If you're feeling particularly adventurous, write a new relation and use it
+We can define relations as functions! Play around with defining some new facts and using these relations to pose questions about these facts. If you're feeling particularly adventurous, write a new relation and use it.
+
+Primitives
+----
+
+Let's step back for a moment. <code>core.logic</code> is built upon a small set of primitives - they are <code>run</code>, <code>exist</code>, <code>==</code>, and <code>conde</code>. We're already pretty familiar with <code>run</code>, <code>exist</code>, and <code>==</code>. <code>run</code> is simple, it let's us <code>run</code> our logic programs. <code>exist</code> is also pretty simple, it lets us declare new logic variables. <code>==</code> is a bit mysterious and we've never even seen conde before.
 
 Unification
 ----
@@ -260,16 +265,24 @@ This shows that in order for the two terms <code>[x 2]</code> and <code>[1 y]</c
 Multiple Universes
 ----
 
-Any logic program that returns multiple results has <code>conde</code> somewhere. <code>conde</code> is how we express logical disjunction. This just means that this or that can both satisfy some condition.
+By now we're already familiar with conjuction, that is, logical **and**.
 
+```clj
+(run* [q] (fun q) (like q 'Mary))
 ```
-(defn tea-or-coffee [x]
+
+We know now that is the read as find <code>q</code> such that <code>q</code> is fun **and** <code>q</code> likes Mary.
+
+But how to express logical **or**?
+
+```clj
+(run* [q]
   (conde
-   ((== x 'tea))
-   ((== x 'coffee))))
+    ((fun q))
+    ((like q 'Mary))))
 ```
 
-This function when introduced into a logic program will produce two possibilities for <code>x</code>. One possibility is that <code>x</code> is bound to <code>'tea</code>. The other possibility is that <code>x</code> is bound to <code>'coffee</code>
+The above does exactly that - find <code>q</code> such that <code>q</code> is fun *or* <code>q</code> likes Mary. This is the essence of how we get multiple answers from <code>core.logic</code>.
 
 Magic Tricks
 ----
