@@ -257,13 +257,67 @@ tut1=> (run* [q] (exist [x y] (== [x 2] [1 y]) (== q [x y])))
 
 This shows that in order for the two terms <code>[x 2]</code> and <code>[1 y]</code> to be unified, the logic varialbe <code>x</code> must be bound to 1 and the logic variable <code>y</code> must be bound to 2.
 
+conde
+----
+
+Any logic program that returns multiple results has <code>conde</code> somewhere. <code>conde</code> is how we express logical disjunction. This just means that this or that can both satisfy some condition.
+
+```
+(defn tea-or-coffee [x]
+  (conde
+   ((== x 'tea))
+   ((== x 'coffee))))
+```
+
+This function when introduced into a logic program will produce two possibilities for <code>x</code>. One possibility is that <code>x</code> is bound to <code>'tea</code>. The other possibility is that <code>x</code> is bound to <code>'coffee</code>
+
 Magic Tricks
 ----
 
-By now we're tired of genealogy. Let's go back to the cozy world of Computer Science. One of the very first things people introduce in CS are arrays and/or lists. It’s often convenient to take two lists and join them together. We’ll definie a relational function that does this for us.
+By now we're tired of genealogy. Let's go back to the cozy world of Computer Science. One of the very first things people introduce in CS are arrays and/or lists. It’s often convenient to take two lists and join them together. In Clojure this functionality exists via <code>concat</code>. However we're going to look at a relational version of the function called <code>appendo</code>. While <code>appendo</code> is certainly be slower than <code>concat</code> it has magical powers that <code>concat</code> does not have.
+
+First we'll want to load the next tutorial and switch into it's namespace.
 
 ```clj
+tut1=> (in-ns 'user)
+nil
+user=> (load "logic_tutorial/tut2")
+nil
+user=> (in-ns 'logic-tutorial.tut2)
+nil
 ```
+
+Relational functions are written quite differently than their functional counterparts. Instead of return value, we usually make the final parameter be output variable that we'll unify the answer to. This makes it easier to compose relations together. This also means that relational programs in general look quite different from functional programs.
+
+Open <code>src/logic-tutorial/tut2.clj</code>. You'll find the definition for <code>appendo</code>.
+
+```clj
+(defn appendo [l1 l2 o]
+  (conde
+    ((== l1 ()) (== l2 o))
+    ((exist [a d r]
+       (conso a d l1)
+       (conso a r l2)
+       (appendo d l2 r)))))
+```
+
+We can pass in logic variables in any one of it's three arguments.
+
+Now try the following:
+
+```clj
+tut2=> (run* [q] (appendo [1 2] [3 4] q))
+([1 2 3 4])
+```
+
+Seems reasonable. Now try this:
+
+```clj
+tut2=> (run* [q] (appendo [1 2] q [1 2 3 4]))
+([3 4])
+```
+
+Note that <code>appendo</code> can infer it's inputs!
 
 There’s actually a short hand for writing appendo, we can write it like this. This is pattern matching - it can decrease the amount of boiler plate we have to write for many programs.
 
@@ -317,7 +371,7 @@ But how fast is it?
 tut3=> (dotimes [_ 100] (time (doall (run 1 [q] (zebrao q)))))
 ```
 
-On my machine, after the JVM has had time to warm up, I see the puzzle can be solved in as little as 3 milliseconds. The Zebra puzzle in and of itself is hardly very interesting. However if such complex constraints can be described and solved so quickly, <code>core.logic</code> is very likely fast enough to be applied to reasoning about types! Only time will tell, but I encourage people to investigate such application.
+On my machine, after the JVM has had time to warm up, I see the puzzle can be solved in as little as 3 milliseconds. The Zebra puzzle in and of itself is hardly very interesting. However if such complex constraints can be described and solved so quickly, <code>core.logic</code> is very likely fast enough to be applied to reasoning about types! Only time will tell, but I encourage people to investigate such applications.
 
 Next Steps
 ----
