@@ -98,14 +98,14 @@ tut1=> (fact fun 'Bob)
 nil
 ```
 
-Let’s ask a new kind of question:
+Let's ask a new kind of question:
 
 ```clj
 tut1=> (run* [q] (man q) (fun q))
 (Bob)
 ```
 
-There's a couple of new things going on here. We use <code>run*</code>. This simply means we want all the answers the computer can find. The question itself is formulate slightly differently than before because we're asking who is a man *and* is fun. Now this getting interesting. Enter in the following:
+There's a couple of new things going on here. We use <code>run*</code>. This simply means we want all the answers the computer can find. The question itself is formulate slightly differently than before because we're asking who is a man and is fun. Now this getting interesting. Enter in the following:
 
 ```clj
 tut1=> (defrel woman x)
@@ -136,31 +136,35 @@ tut1=> (run* [q] (likes 'Mary q))
 ()
 ```
 
-Hmm that doesn't work. This is because we never actually said who *Mary liked*, only that Bob liked Mary:
+Hmm that doesn't work. This is because we never actually said who *Mary liked*, only that Bob liked Mary. Try the following:
 
 ```clj
 tut1=> (fact likes 'Mary 'Bob)
 nil
-tut1=> (run* [q] (exist [x y] (== q [x y]) (likes x y)))
-([Bob Mary] [John Lucy])
-tut1=> (run* [q] (exist [x y] (likes x y) (likes y x) (== q [x y])))
+tut1=> (run* [q] (exist [x y] (likes x y) (== q [x y])))
+([Mary Bob] [Bob Mary] [John Lucy])
 ```
 
-Wow that’s a lot of new information. The exist expression isn’t something we’ve seen before. Why do we need it? That’s because by convention run returns single values. In this case we want to know who like who. This means we need to create to logic variables to store these values in. We then assign both these values to q.
+Wow that's a lot of new information. The exist expression isn't something we've seen before. Why do we need it? By convention <code>run</code> returns single values for <code>q</code> which answer the question. In this case we want to know who like who. This means we need to create logic variables to store these values in. We then assign both these values to <code>q</code> by putting them in a Clojure vector (which is like an array in other programming languages).
 
-I’ve done a lot of lying in the last paragraph. Run the following:
+Try the following:
 
 ```clj
-tut1=> (run* [q] (exist [x y] (likes x y) (== q [x y])))
-([Bob Mary] [John Lucy])
+tut1=> (run* [q] (exist [x y] (likes x y) (likes y x) (== q [x y])))
+([Mary Bob] [Bob Mary])
 ```
 
-Note that the order doesn’t not matter. We can call the like relation and then assign them to q or we can assign to q and call the like relation. But really this isn’t assigment. This is a fairly powerful notion called unification.
+Here we only want the list of people who like each other. Note that the order of how we pose our question doesn't really matter:
 
-Genealogy
+```clj
+tut1=> (run* [q] (exist [x y] (likes x y) (== q [x y]) (likes y x)))
+([Mary Bob] [Bob Mary])
+```
+
+Some Genealogy
 ----
 
-We’ve actually defined some interesting relations in this namespace that we’ll use before we take a closer look at them:
+We've actually predefined some interesting relations in the <code>tut1</code> file that we'll try out first before we take a closer look:
 
 ```clj
 tut1=> (fact parent 'John 'Bobby)
@@ -176,7 +180,7 @@ tut1=> (run* [q] (son q 'John))
 (Bobby)
 ```
 
-Let’s add another fact:
+Let's add another fact:
 
 ```clj
 tut1=> (fact parent 'George 'John) 
@@ -185,7 +189,7 @@ tut1=> (run* [q] (grandparent q 'Bobby))
 (George)
 ```
 
-Huzzah! We define relations in terms of other relations! Composition to the rescue.
+Huzzah! We can define relations in terms of other relations! Composition to the rescue. But how does this work exactly?
 
 Let's take a moment to look at what's in the file. At the top of the file after the namespace declaration you'll see that some relations have been defined:
 
@@ -202,17 +206,19 @@ After this there are some functions:
   (parent y x))
 
 (defn son [x y]
-  (child x y)
-  (male x))
+  (all
+    (child x y)
+    (male x)))
 
 (defn daughter [x y]
-  (child x y)
-  (female x))
+  (all
+    (child x y)
+    (female x)))
 ```
 
-We can define relations as functions!
+We can define relations as functions! Play around with defining some new facts and using these relations to pose questions about these facts. If you're feeling particularly adventurous, write a new relation and use it
 
-By now we’re tired of genealogy. Let's go back to the cozy world of Computer Science. One of the very first things people introduce in CS are arrays and/or lists. It’s often convenient to take two lists and join them together. We’ll definie a relational function that does this for us.
+By now we're tired of genealogy. Let's go back to the cozy world of Computer Science. One of the very first things people introduce in CS are arrays and/or lists. It’s often convenient to take two lists and join them together. We’ll definie a relational function that does this for us.
 
 ```clj
 ```
