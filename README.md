@@ -1,20 +1,25 @@
 A Very Gentle Introduction To Relational & Functional Programming
 ====
 
-This tutorial will guide you through the magic and fun of combining relational programming (also known as logic programming) with functional programming. This tutorial does not assume that you have any knowledge of Lisp, Clojure, Java, or even Functional Programming. The only thing this tutorial assumes is that you are not afraid of using the command line and you have used at least one programming language before in your life.
+This tutorial will guide you through the magic and fun of combining relational programming (also known as logic programming) with functional programming. This tutorial does not assume that you have any knowledge of Lisp, Clojure, Java, or even functional programming. The only thing this tutorial assumes is that you are not afraid of using the command line and you have used at least one programming language before in your life.
 
 Why Logic Programming?
 ----
 
-What's the point of writing programs in the Relational Paradigm? First off, aesthetics dammit. Logic programs are simply beautiful as they often have a declarative nature that trumps even the gems you'll find in functional programming languages. This is because logic programs use search, and thus they are often not muddied up by algorithmic details. If you haven't tried Prolog before, relational programming will at times seems almost magical.
+What's the point of writing programs in the relational paradigm? First off, aesthetics dammit. 
 
-But of course the most important reason to learn the relational paradigm  is that it's FUN. However, if you're still skeptical as to it's usefulness you can read following, otherwise I recommend skipping down to *Getting Started*.
+Logic programs are simply beautiful as they often have a declarative nature which trumps even the gems found in functional programming languages. Logic programs use search, and thus they are often not muddied up by algorithmic details. If you haven't tried Prolog before, relational programming will at times seems almost magical.
 
-What about real world applications? There are certainly many domains where the relational programming paradigm can save a lot of time and headache - planning, scheduling, theorem proving, declarative networking are some. However, there some practical areas today for which *core.logic* is already useful for and that are being actively investigated.
+However, I admit, the most important reason to learn the relational paradigm is because it's FUN. If you're still skeptical as to it's usefulness you can read following, otherwise I recommend skipping down to *Getting Started*.
+
+For the Skeptics
+----
+
+What about real world applications? There are certainly many domains where the relational programming paradigm can save a lot of time and headache - planning, scheduling, theorem proving, declarative networking are a few. However, there some practical areas today for which **core.logic** is already useful for and that are being actively investigated.
 
 Ever wondered how a type checker and type interferencer works? Relational programming.
 
-Ever wondered why generic methods in programming languages aren't more *generic*? Again relational programming can be used to to make these kinds of things simpler to implement.
+Ever wondered why generic methods in programming languages aren't more *generic*? Again relational programming can help
 
 Ever wondered why pattern matching in Standard ML, OCaml, Haskell, and Scala are so broken? Again relational programming can be used to solve these inadequacies.
 
