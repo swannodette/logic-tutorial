@@ -105,7 +105,7 @@ tut1=> (run* [q] (man q) (fun q))
 (Bob)
 ```
 
-There's a couple of new things going on here. We use <code>run*</code>. This simply means we want all the answers the computer can find. The question itself is formulate slightly differently than before because we're asking who is a man and is fun. Now this getting interesting. Enter in the following:
+There's a couple of new things going on here. We use <code>run*</code>. This means we want all the answers the computer can find. The question itself is formulated differently than before because we're asking who is a man *and* is fun. Enter in the following:
 
 ```clj
 tut1=> (defrel woman x)
@@ -136,7 +136,7 @@ tut1=> (run* [q] (likes 'Mary q))
 ()
 ```
 
-Hmm that doesn't work. This is because we never actually said who *Mary liked*, only that Bob liked Mary. Try the following:
+Hmm that doesn't work. This is because we never actually said *who Mary liked*, only that Bob liked Mary. Try the following:
 
 ```clj
 tut1=> (fact likes 'Mary 'Bob)
@@ -145,7 +145,7 @@ tut1=> (run* [q] (exist [x y] (likes x y) (== q [x y])))
 ([Mary Bob] [Bob Mary] [John Lucy])
 ```
 
-Wow that's a lot of new information. The exist expression isn't something we've seen before. Why do we need it? By convention <code>run</code> returns single values for <code>q</code> which answer the question. In this case we want to know who like who. This means we need to create logic variables to store these values in. We then assign both these values to <code>q</code> by putting them in a Clojure vector (which is like an array in other programming languages).
+Wow that's a lot of new information. The exist expression isn't something we've seen before. Why do we need it? By convention <code>run</code> returns single values for <code>q</code> which answer the question. In this case we want to know who likes who. This means we need to create logic variables to store these values in. We then assign both these values to <code>q</code> by putting them in a Clojure vector (which is like an array in other programming languages).
 
 Try the following:
 
