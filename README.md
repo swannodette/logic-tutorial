@@ -49,7 +49,7 @@ user=> (in-ns 'logic-tutorial.tut1)
 
 Your prompt will change and you're now working in a place that has the magic of relational programming available to you. The REPL prompt will show <code>logic-tutorial.tut1</code>, we're going show <code>tut1</code> to keep things concise.
 
-Baby Steps
+Question & Answer
 ----
 
 Unlike most programming systems, with relational programming we can actually ask the computer questions. But before we ask the computer questions, we need define some facts! The first thing we want the computer to know about is that there are men:
