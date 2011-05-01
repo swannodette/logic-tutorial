@@ -221,7 +221,7 @@ We can define relations as functions! Play around with defining some new facts a
 Unification
 ----
 
-Earlier I lied about assignment when using the <code>==</code> operator. The <code>==</code> operator means that we want to unify two terms. All this means is that want the computer to take two things and attempt to make them equal. If logic variables occur in any of the terms, the computer will try to bind that logic variable to value. If the computer can't make two terms, it fails - this is why sometimes we don't see any results.
+Earlier I lied about assignment when using the <code>==</code> operator. The <code>==</code> operator means that we want to unify two terms. This means we'd like the computer to take two things and attempt to make them equal. If logic variables occur in either of the terms, the computer will try to bind that logic variable to what ever value matches in the other term. If the computer can't make two terms equal, it fails - this is why sometimes we don't see any results.
 
 Consider the following:
 
@@ -247,6 +247,15 @@ tut1=> (run* [q] (== q 5) (== q 4))
 ```
 
 Once we've unified a logic variable to a concrete value we can unify it again with that value, but we cannot unify with a concrete value that is not equal to what it is currently bound to.
+
+Here's an example showing that we can unify complex terms:
+
+```clj
+tut1=> (run* [q] (exist [x y] (== [x 2] [1 y]) (== q [x y])))
+([1 2])
+```
+
+This shows that in order for the two terms <code>[x 2]</code> and <code>[1 y]</code> to be unified, the logic varialbe <code>x</code> must be bound to 1 and the logic variable <code>y</code> must be bound to 2.
 
 Magic Tricks
 ----
@@ -302,7 +311,7 @@ tut3=> (run 1 [q] (zebrao q))
 ([[norwegian kools _.0 fox yellow] [ukrainian chesterfields tea horse blue] [englishman oldgolds milk snails red] [spaniard lucky-strikes oj dog ivory] [japanese parliaments coffee _.1 green]])
 ```
 
-But hoow fast is it?
+But how fast is it?
 
 ```clj
 tut3=> (dotimes [_ 100] (time (doall (run 1 [q] (zebrao q)))))
