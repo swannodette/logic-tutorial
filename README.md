@@ -15,7 +15,7 @@ However, I admit, the most important reason to learn the relational paradigm is 
 For the Skeptics
 ----
 
-What about real world applications? There are certainly many domains where the relational programming paradigm can save a lot of time and headache - planning, scheduling, theorem proving, declarative networking are a few. Admittedly these are a bit sophisticated use caes. Yet, there some very practical areas today for which **core.logic** is already useful for and that are being actively investigated.
+What about real world applications? There are certainly many domains where the relational programming paradigm can save a lot of time and headache - planning, scheduling, theorem proving, declarative networking are a few. Admittedly these are somewhat sophisticated use cases. Yet, there some very practical areas today for which **core.logic** is already or potentially useful for.
 
 For example, have you ever wondered how a type checker and/or type inferencer works? Relational programming. Have you ever wondered why generic methods in programming languages aren't more *generic*? Again relational programming can help. Have you ever wondered why pattern matching in Standard ML, OCaml, Haskell, and Scala are so broken? Again relational programming can be used to solve these inadequacies.
 
@@ -280,7 +280,7 @@ By now we're already familiar with conjuction, that is, logical **and**.
 (run* [q] (fun q) (like q 'Mary))
 ```
 
-We know now that is the read as find <code>q</code> such that <code>q</code> is fun **and** <code>q</code> likes Mary.
+We know now to read this as find <code>q</code> such that <code>q</code> is fun **and** <code>q</code> likes Mary.
 
 But how to express logical **or**?
 
