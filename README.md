@@ -258,6 +258,58 @@ By now we're tired of genealogy. Let's go back to the cozy world of Computer Sci
 
 There’s actually a short hand for writing appendo, we can write it like this. This is pattern matching - it can decrease the amount of boiler plate we have to write for many programs.
 
+Zebras
+----
+
+There's a classic old puzzle sometimes to referred to as the Zebra puzzle, sometimes as Einstein's puzzle. Writing an algorithm for solving the constraint is a bit tedious - relational programming allows us to just describe the constraints and it can produce the correct answer for us.
+
+The puzzle is described in the following manner.
+
+If you look in <code>src/logic_tutorial/tut3.clj</code> you'll find the following code:
+
+```clj
+(defne righto [x y l]
+  ([_ _ [x y . ?r]])
+  ([_ _ [_ . ?r]] (righto x y ?r)))
+
+(defn nexto [x y l]
+  (conde
+    ((righto x y l))
+    ((righto y x l))))
+
+(defn zebrao [hs]
+  (all
+   (== [_ _ [_ _ 'milk _ _] _ _] hs)                         
+   (firsto hs ['norwegian _ _ _ _])                         
+   (nexto ['norwegian _ _ _ _] [_ _ _ _ 'blue] hs)       
+   (righto [_ _ _ _ 'ivory] [_ _ _ _ 'green] hs)         
+   (membero ['englishman _ _ _ 'red] hs)                    
+   (membero [_ 'kools _ _ 'yellow] hs)                      
+   (membero ['spaniard _ _ 'dog _] hs)                      
+   (membero [_ _ 'coffee _ 'green] hs)                      
+   (membero ['ukrainian _ 'tea _ _] hs)                     
+   (membero [_ 'lucky-strikes 'oj _ _] hs)                  
+   (membero ['japanese 'parliaments _ _ _] hs)              
+   (membero [_ 'oldgolds _ 'snails _] hs)                   
+   (nexto [_ _ _ 'horse _] [_ 'kools _ _ _] hs)          
+   (nexto [_ _ _ 'fox _] [_ 'chesterfields _ _ _] hs)))
+```
+
+That is the entirety of the program. Let's run it:
+
+```clj
+tut3=> (run 1 [q] (zebrao q))
+([[norwegian kools _.0 fox yellow] [ukrainian chesterfields tea horse blue] [englishman oldgolds milk snails red] [spaniard lucky-strikes oj dog ivory] [japanese parliaments coffee _.1 green]])
+```
+
+But hoow fast is it?
+
+```clj
+tut3=> (dotimes [_ 100] (time (doall (run 1 [q] (zebrao q)))))
+```
+
+On my machine, after the JVM has had time to warm up, I see the puzzle can be solved in as little as 3 milliseconds. The Zebra puzzle in and of itself is hardly very interesting. However if such complex constraints can be described and solved so quickly, <code>core.logic</code> is very likely fast enough to be applied to reasoning about types! Only time will tell, but I encourage people to investigate such application.
+
 Next Steps
 ----
 
