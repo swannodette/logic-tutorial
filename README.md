@@ -1,32 +1,52 @@
 A Very Gentle Introduction To Relational & Functional Programming
 ====
 
-This tutorial will guide you through the magic and fun of combining relational programming with functional programming. This tutorial does not assume that you have any knowledge of Lisp, Clojure, Java, or even Functional Programming. The only thing this tutorial assumes is that you are not afraid of using the command line and you’ve used at least one programming language before in your life.
+This tutorial will guide you through the magic and fun of combining relational programming (also known as logic programming) with functional programming. This tutorial does not assume that you have any knowledge of Lisp, Clojure, Java, or even Functional Programming. The only thing this tutorial assumes is that you are not afraid of using the command line and you have used at least one programming language before in your life.
 
-First things first, install [Leiningen](https://github.com/technomancy/leiningen) or [Cake]:(https://github.com/ninjudd/cake). Then clone this repository and switch into its directory. Once you’ve done that, run <code>lein deps</code> or <code>cake deps</code>. This will grab all the dependencies required for this tutorial. You can use a regular text editor to cover the material in this tutorial.
+Why Logic Programming?
+----
+
+What's the point of writing programs in the Relational Paradigm? First off, aesthetics dammit. Logic programs are simply beautiful as they often have a declarative nature that trumps even the gems you'll find in functional programming languages. This is because logic programs use search, and thus they are often not muddied up by algorithmic details. If you haven't tried Prolog before, relational programming will at times seems almost magical.
+
+But of course the most important reason to learn the relational paradigm  is that it's FUN. However, if you're still skeptical as to it's usefulness you can read following, otherwise I recommend skipping down to *Getting Started*.
+
+What about real world applications? There are certainly many domains where the relational programming paradigm can save a lot of time and headache - planning, scheduling, theorem proving, declarative networking are some. However, there some practical areas today for which *core.logic* is already useful for and that are being actively investigated.
+
+Ever wondered how a type checker and type interferencer works? Relational programming.
+
+Ever wondered why generic methods in programming languages aren't more *generic*? Again relational programming can be used to to make these kinds of things simpler to implement.
+
+Ever wondered why pattern matching in Standard ML, OCaml, Haskell, and Scala are so broken? Again relational programming can be used to solve these inadequacies.
+
+Still not convinced? Well go try out some other tutorial then!
 
 Getting Started
 ----
 
-Ok, we’re ready to begin. Type <code>lein repl</code> or <code>cake repl</code>, this will drop you into the Clojure prompt. First lets double check that everything went ok. Enter the following at the Clojure REPL:
+First things first, install [Leiningen](https://github.com/technomancy/leiningen) or [Cake](https://github.com/ninjudd/cake). Then clone this repository and switch into its directory. Once you've done that, run <code>lein deps</code> or <code>cake deps</code>. This will grab all the dependencies required for this tutorial. You can use your favorite text editor to cover the material in this tutorial.
+
+First Steps
+----
+
+Ok, we're ready to begin. Type <code>lein repl</code> or <code>cake repl</code>, this will drop you into the Clojure prompt. First lets double check that everything went ok. Enter the following at the Clojure REPL:
 
 ```clj
 user=> (require 'clojure.core.logic.minikanren)
 ```
 
-The REPL should print nil and it should return control to you. If it doesn’t file an issue for this tutorial and I’ll look into it. If all goes well run the following:
+The REPL should print nil and it should return control to you. If it doesn't file an issue for this tutorial and I'll look into it. If all goes well run the following:
 
 ```clj
 user=> (load "logic_tutorial/tut1")
 ```
 
-You’ll see some harmless warning, then run the following:
+You'll see some harmless warning, then run the following:
 
 ```clj
 user=> (in-ns 'logic-tutorial.tut1)
 ```
 
-Your prompt will change and you’re now working in a place that has the magic of logic programming available to you. It will show logic-tutorial.tut1, we're going show tut1 to keep things a bit more readable.
+Your prompt will change and you're now working in a place that has the magic of relational programming available to you. The REPL prompt will show <code>logic-tutorial.tut1</code>, we're going show <code>tut1</code> to keep things concise.
 
 Baby Steps
 ----
