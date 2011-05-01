@@ -221,7 +221,7 @@ We can define relations as functions! Play around with defining some new facts a
 Primitives
 ----
 
-Let's step back for a moment. <code>core.logic</code> is built upon a small set of primitives - they are <code>run</code>, <code>exist</code>, <code>==</code>, and <code>conde</code>. We're already pretty familiar with <code>run</code>, <code>exist</code>, and <code>==</code>. <code>run</code> is simple, it let's us <code>run</code> our logic programs. <code>exist</code> is also pretty simple, it lets us declare new logic variables. <code>==</code> is a bit mysterious and we've never even seen conde before.
+Let's step back for a moment. <code>core.logic</code> is built upon a small set of primitives - they are <code>run</code>, <code>exist</code>, <code>==</code>, and <code>conde</code>. We're already pretty familiar with <code>run</code>, <code>exist</code>, and <code>==</code>. <code>run</code> is simple, it let's us <code>run</code> our logic programs. <code>exist</code> is also pretty simple, it lets us declare new logic variables. <code>==</code> is a bit mysterious and we've never even seen <code>conde</code> before.
 
 Unification
 ----
@@ -261,6 +261,15 @@ tut1=> (run* [q] (exist [x y] (== [x 2] [1 y]) (== q [x y])))
 ```
 
 This shows that in order for the two terms <code>[x 2]</code> and <code>[1 y]</code> to be unified, the logic varialbe <code>x</code> must be bound to 1 and the logic variable <code>y</code> must be bound to 2.
+
+Note is perfectly fine to unify two variable to each other:
+
+```clj
+tut1=> (run* [q] (exist [x y] (== x y) (== q [x y])))
+([_.0 _.0])
+tut1=> (run* [q] (exist [x y] (== x y) (== y 1) (== q [x y])))
+([1 1])
+```
 
 Multiple Universes
 ----
