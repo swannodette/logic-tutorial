@@ -10,12 +10,14 @@
   (parent y x))
 
 (defn son [x y]
-  (child x y)
-  (male x))
+  (all
+   (child x y)
+   (male x)))
 
 (defn daughter [x y]
-  (child x y)
-  (female x))
+  (all
+   (child x y)
+   (female x)))
 
 (defn grandparent [x y]
   (exist [z]

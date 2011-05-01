@@ -1,14 +1,14 @@
-A Very Gentle Introduction To Relational Programming
+A Very Gentle Introduction To Relational & Functional Programming
 ====
 
-This tutorial will guide you through the magic and fun of relational programming. This tutorial does not assume that you have any knowledge of Lisp, Clojure, Java, or even Functional Programming. The only thing this tutorial assumes is that you are not afraid of using the command line and you’ve used some programming language before in your life. Since you’re using GitHub I think this is a relatively safe assumption :)
+This tutorial will guide you through the magic and fun of combining relational programming with functional programming. This tutorial does not assume that you have any knowledge of Lisp, Clojure, Java, or even Functional Programming. The only thing this tutorial assumes is that you are not afraid of using the command line and you’ve used at least one programming language before in your life.
 
-First things first, install Leiningen or Cake. Then clone this repository and switch into its directory. Once you’ve done that, run <code>lein deps</code> or <code>cake deps</code>. This will grab all of the dependencies needed for this tutorial.
+First things first, install [Leiningen](https://github.com/technomancy/leiningen) or [Cake]:(https://github.com/ninjudd/cake). Then clone this repository and switch into its directory. Once you’ve done that, run <code>lein deps</code> or <code>cake deps</code>. This will grab all the dependencies required for this tutorial. You can use a regular text editor to cover the material in this tutorial.
 
 Getting Started
 ----
 
-Ok, we’re ready to being. Type <code>lein repl</code> or <code>cake repl</code>, this will drop you into the Clojure prompt. First lets double check that everything went ok. Enter the following at the Clojure REPL:
+Ok, we’re ready to begin. Type <code>lein repl</code> or <code>cake repl</code>, this will drop you into the Clojure prompt. First lets double check that everything went ok. Enter the following at the Clojure REPL:
 
 ```clj
 user=> (require 'clojure.core.logic.minikanren)
@@ -165,9 +165,40 @@ tut1=> (run* [q] (grandparent q 'Bobby))
 
 Huzzah! We define relations in terms of other relations! Composition to the rescue.
 
-Let’s take a moment to look at what’s in the file.
+Let's take a moment to look at what's in the file. At the top of the file after the namespace declaration you'll see that some relations have been defined:
 
-By now we’re tired of genealogy. Let’s go back to the cozy world of Computer Science. One of the very first things people introduce in CS are arrays and/or lists. It’s often convenient to take two lists and join them together. We’ll definie a relational function that does this for us.
+```clj
+(defrel parent x y)
+(defrel male x)
+(defrel female x)
+```
+
+After this there are some functions:
+
+```clj
+(defn child [x y]
+  (parent y x))
+
+(defn son [x y]
+  (child x y)
+  (male x))
+
+(defn daughter [x y]
+  (child x y)
+  (female x))
+```
+
+We can define relations as functions!
+
+By now we’re tired of genealogy. Let's go back to the cozy world of Computer Science. One of the very first things people introduce in CS are arrays and/or lists. It’s often convenient to take two lists and join them together. We’ll definie a relational function that does this for us.
+
+```clj
+```
+
+Unification
+----
+
+Let's slow down a moment to look at what unification really means. Unification tries to take two things and bring them together. If it can't do so it, it fails - this is why sometimes we don't see any results. Another key thing about unification is that once a logic variable has been bound to a ground value - that is it's been unified with something that is not a variable - attempting to unify with a unequal value will also cause failure.
 
 Magic Tricks
 ----
