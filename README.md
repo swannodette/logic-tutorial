@@ -8,16 +8,16 @@ Why Logic Programming?
 
 What's the point of writing programs in the relational paradigm? First off, aesthetics dammit. 
 
-Logic programs are simply beautiful as they often have a declarative nature which trumps even the gems found in functional programming languages. Logic programs use search, and thus they are often not muddied up by algorithmic details. If you haven't tried Prolog before, relational programming will at times seems almost magical.
+Logic programs are simply beautiful as they often have a declarative nature which trumps even the gems found in functional programming languages. Logic programs use search, and thus they are often not muddied up by algorithmic details. If you haven't tried Prolog before, relational programming will at times seem almost magical.
 
-However, I admit, the most important reason to learn the relational paradigm is because it's FUN. If you're still skeptical as to it's usefulness you can read following, otherwise I recommend skipping down to *Getting Started*.
+However, I admit, the most important reason to learn the relational paradigm is because it's FUN. If you're still skeptical as to it's usefulness you can read the following, otherwise I recommend skipping down to **Getting Started**.
 
 For the Skeptics
 ----
 
-What about real world applications? There are certainly many domains where the relational programming paradigm can save a lot of time and headache - planning, scheduling, theorem proving, declarative networking are a few. However, there some practical areas today for which **core.logic** is already useful for and that are being actively investigated.
+What about real world applications? There are certainly many domains where the relational programming paradigm can save a lot of time and headache - planning, scheduling, theorem proving, declarative networking are a few. Admittedly these are a bit sophisticated use caes. Yet, there some very practical areas today for which **core.logic** is already useful for and that are being actively investigated.
 
-Ever wondered how a type checker and type interferencer works? Relational programming. Ever wondered why generic methods in programming languages aren't more *generic*? Again relational programming can help. Ever wondered why pattern matching in Standard ML, OCaml, Haskell, and Scala are so broken? Again relational programming can be used to solve these inadequacies.
+For example, have you ever wondered how a type checker and type interferencer works? Relational programming. Have you ever wondered why generic methods in programming languages aren't more *generic*? Again relational programming can help. Have you ever wondered why pattern matching in Standard ML, OCaml, Haskell, and Scala are so broken? Again relational programming can be used to solve these inadequacies.
 
 Still not convinced? Well go try out some other tutorial then!
 
@@ -257,7 +257,7 @@ tut1=> (run* [q] (exist [x y] (== [x 2] [1 y]) (== q [x y])))
 
 This shows that in order for the two terms <code>[x 2]</code> and <code>[1 y]</code> to be unified, the logic varialbe <code>x</code> must be bound to 1 and the logic variable <code>y</code> must be bound to 2.
 
-conde
+Multiple Universes
 ----
 
 Any logic program that returns multiple results has <code>conde</code> somewhere. <code>conde</code> is how we express logical disjunction. This just means that this or that can both satisfy some condition.
