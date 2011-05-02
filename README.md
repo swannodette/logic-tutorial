@@ -10,21 +10,7 @@ What's the point of writing programs in the relational paradigm? First off, aest
 
 Logic programs are simply beautiful as they often have a declarative nature which trumps even the gems found in functional programming languages. Logic programs use search, and thus they are often not muddied up by algorithmic details. If you haven't tried Prolog before, relational programming will at times seem almost magical.
 
-However, I admit, the most important reason to learn the relational paradigm is because it's FUN. If you're still skeptical as to it's usefulness you can read the following, otherwise I recommend skipping down to **Getting Started**.
-
-For the Skeptics
-----
-
-What about real world applications? There are certainly many domains where the relational programming paradigm can save a lot of time and headache - planning, scheduling, theorem proving, declarative networking are a few. Admittedly these are somewhat sophisticated use cases. What about uses cases that can help us day in and day out?
-
-Have you ever wished a dynamic programming language offered optional type checking? Type checkers and type inferencers are relational programs. Have you ever wondered why generic methods in programming languages aren't more *generic*? Again relational programming can help. Have you ever wondered why pattern matching in Standard ML, OCaml, Haskell, and Scala are so broken? Again relational programming can be used to solve these inadequacies.
-
-Still not convinced? Well go try out some other tutorial then!
-
-Getting Started
-----
-
-First things first, install [Leiningen](https://github.com/technomancy/leiningen) or [Cake](https://github.com/ninjudd/cake). Then clone this repository and switch into its directory. Once you've done that, run <code>lein deps</code> or <code>cake deps</code>. This will grab all the dependencies required for this tutorial. You can use your favorite text editor to cover the material in this tutorial.
+However, I admit, the most important reason to learn the relational paradigm is because it's FUN.
 
 First Steps
 ----
