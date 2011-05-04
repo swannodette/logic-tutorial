@@ -91,7 +91,7 @@ tut1=> (run* [q] (man q) (fun q))
 (Bob)
 ```
 
-There's a couple of new things going on here. We use <code>run*</code>. This means we want all the answers the computer can find. The question itself is formulated differently than before because we're asking who is a man *and* is fun. Enter in the following:
+There's a couple of new things going on here. We use <code>run\*</code>. This means we want all the answers the computer can find. The question itself is formulated differently than before because we're asking who is a man *and* is fun. Enter in the following:
 
 ```clj
 tut1=> (defrel woman x)
