@@ -3,6 +3,11 @@ A Very Gentle Introduction To Relational & Functional Programming
 
 This tutorial will guide you through the magic and fun of combining relational programming (also known as logic programming) with functional programming. This tutorial does not assume that you have any knowledge of Lisp, Clojure, Java, or even functional programming. The only thing this tutorial assumes is that you are not afraid of using the command line and you have used at least one programming language before in your life.
 
+Work in Progress
+----
+
+This tutorial is very much a work in progress. It's possible to get through the first parts and learn something, but expect a considerable amount of fleshing out in the next couple of weeks.
+
 Why Logic Programming?
 ----
 
@@ -263,7 +268,7 @@ Multiple Universes
 By now we're already familiar with conjuction, that is, logical **and**.
 
 ```clj
-(run* [q] (fun q) (like q 'Mary))
+(run* [q] (fun q) (likes q 'Mary))
 ```
 
 We know now to read this as find <code>q</code> such that <code>q</code> is fun **and** <code>q</code> likes Mary.
