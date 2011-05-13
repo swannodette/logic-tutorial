@@ -28,4 +28,4 @@
     (membero ['japanese 'parliaments _ _ _] hs)              
     (membero [_ 'oldgolds _ 'snails _] hs)                   
     (nexto [_ _ _ 'horse _] [_ 'kools _ _ _] hs)          
-    (nexto [_ _ _ 'fox _] [_ 'chesterfields _ _ _] hs))))l
+    (nexto [_ _ _ 'fox _] [_ 'chesterfields _ _ _] hs))))
