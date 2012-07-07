@@ -253,7 +253,7 @@ tut1=> (run* [q] (exist [x y] (== [x 2] [1 y]) (== q [x y])))
 
 This shows that in order for the two terms <code>[x 2]</code> and <code>[1 y]</code> to be unified, the logic varialbe <code>x</code> must be bound to 1 and the logic variable <code>y</code> must be bound to 2.
 
-Note is perfectly fine to unify two variable to each other:
+Note: it's perfectly fine to unify two variable to each other:
 
 ```clj
 tut1=> (run* [q] (exist [x y] (== x y) (== q [x y])))
@@ -287,7 +287,7 @@ The above does exactly that - find <code>q</code> such that <code>q</code> is fu
 Magic Tricks
 ----
 
-By now we're tired of genealogy. Let's go back to the cozy world of Computer Science. One of the very first things people introduce in CS are arrays and/or lists. It’s often convenient to take two lists and join them together. In Clojure this functionality exists via <code>concat</code>. However we're going to look at a relational version of the function called <code>appendo</code>. While <code>appendo</code> is certainly be slower than <code>concat</code> it has magical powers that <code>concat</code> does not have.
+By now we're tired of genealogy. Let's go back to the cozy world of Computer Science. One of the very first things people introduce in CS are arrays and/or lists. It’s often convenient to take two lists and join them together. In Clojure this functionality exists via <code>concat</code>. However we're going to look at a relational version of the function called <code>appendo</code>. While <code>appendo</code> is certainly slower than <code>concat</code> it has magical powers that <code>concat</code> does not have.
 
 First we'll want to load the next tutorial and switch into it's namespace.
 
@@ -337,7 +337,7 @@ There’s actually a short hand for writing appendo, we can write it like this. 
 Zebras
 ----
 
-There's a classic old puzzle sometimes to referred to as the Zebra puzzle, sometimes as Einstein's puzzle. Writing an algorithm for solving the constraint is a bit tedious - relational programming allows us to just describe the constraints and it can produce the correct answer for us.
+There's a classic old puzzle sometimes referred to as the Zebra puzzle, sometimes as Einstein's puzzle. Writing an algorithm for solving the constraint is a bit tedious - relational programming allows us to just describe the constraints and it can produce the correct answer for us.
 
 The puzzle is described in the following manner.
 
@@ -392,7 +392,7 @@ Next Steps
 
 Hopefully this short tutorial has revealed some of the beauty of relational programming. To be sure, relational programming as I've presented here has its limitations. Yet, people are actively working on surmounting those limitations in more ways than I really have time to document here.
 
-While you can get along just fine as a programmer without using relational programming, many aspects of the tools we use today will seem mysterious without a basic understanding how relational programming works. It also allows to add features to our languages that are otherwise harder to implement. For example the elegant type systems (and type inferencing) found in Standard ML and Haskell would be fascinating to model via **core.logic**. I also think that a efficient predicate dispatch system that gives ML pattern matching performance with the open-ended nature of CLOS generic methods would be easily achievable via **core.logic**.
+While you can get along just fine as a programmer without using relational programming, many aspects of the tools we use today will seem mysterious without a basic understanding of how relational programming works. It also allows us to add features to our languages that are otherwise harder to implement. For example the elegant type systems (and type inferencing) found in Standard ML and Haskell would be fascinating to model via **core.logic**. I also think that an efficient predicate dispatch system that gives ML pattern matching performance with the open-ended nature of CLOS generic methods would be easily achievable via **core.logic**.
 
 Resources
 ---
@@ -403,3 +403,4 @@ If you found this tutorial interesting and would like to learn more I recommend 
 * [Paradigms of Artificial Intelligence Programming](http://norvig.com/paip.html)
 * [Prolog Programming For Artificial Intelligence](http://www.amazon.com/Prolog-Programming-Artificial-Intelligence-Bratko/dp/0201403757)
 * [Concepts, Techniques, and Models of Computer Programming](http://www.info.ucl.ac.be/~pvr/book.html)
+
