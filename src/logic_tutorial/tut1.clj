@@ -1,6 +1,6 @@
 (ns logic-tutorial.tut1
-  (:refer-clojure :exlude [reify == inc])
-  (:use [clojure.core.logic minikanren prelude]))
+  (:refer-clojure :exlude [==])
+  (:use [clojure.core.logic]))
 
 (defrel parent x y)
 (defrel male x)
@@ -20,11 +20,11 @@
    (female x)))
 
 (defn grandparent [x y]
-  (exist [z]
+  (fresh [z]
     (parent x z)
     (parent z y)))
 
 (defn granddaughter [x y]
-  (exist [z]
+  (fresh [z]
     (daughter x z)
     (child z y)))
