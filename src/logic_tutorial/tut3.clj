@@ -1,7 +1,7 @@
 (ns logic-tutorial.tut3
   (:refer-clojure :exlude [reify == inc])
   (:use [clojure.core.logic minikanren prelude]
-        [clojure.contrib.macro-utils :as macro]))
+        [clojure.tools.macro :as macro]))
 
 (defne righto [x y l]
   ([_ _ [x y . ?r]])
