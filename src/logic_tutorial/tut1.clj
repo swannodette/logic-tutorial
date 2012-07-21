@@ -1,5 +1,5 @@
 (ns logic-tutorial.tut1
-  (:refer-clojure :exlude [==])
+  (:refer-clojure :exclude [==])
   (:use [clojure.core.logic]))
 
 (defrel parent x y)

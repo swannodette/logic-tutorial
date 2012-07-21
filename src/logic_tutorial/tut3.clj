@@ -1,5 +1,5 @@
 (ns logic-tutorial.tut3
-  (:refer-clojure :exlude [==])
+  (:refer-clojure :exclude [==])
   (:use [clojure.core.logic]
         [clojure.tools.macro :as macro]))
 

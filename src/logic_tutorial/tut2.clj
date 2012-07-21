@@ -1,5 +1,5 @@
 (ns logic-tutorial.tut2
-  (:refer-clojure :exlude [==])
+  (:refer-clojure :exclude [==])
   (:use [clojure.core.logic :exclude [appendo]]))
 
 (defn appendo [l1 l2 o]
