@@ -7,5 +7,5 @@
     ((== l1 ()) (== l2 o))
     ((exist [a d r]
        (conso a d l1)
-       (conso a r l2)
+       (conso a r o)
        (appendo d l2 r)))))
