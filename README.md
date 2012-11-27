@@ -251,9 +251,9 @@ tut1=> (run* [q] (fresh [x y] (== [x 2] [1 y]) (== q [x y])))
 ([1 2])
 ```
 
-This shows that in order for the two terms <code>[x 2]</code> and <code>[1 y]</code> to be unified, the logic varialbe <code>x</code> must be bound to 1 and the logic variable <code>y</code> must be bound to 2.
+This shows that in order for the two terms <code>[x 2]</code> and <code>[1 y]</code> to be unified, the logic variable <code>x</code> must be bound to 1 and the logic variable <code>y</code> must be bound to 2.
 
-Note: it's perfectly fine to unify two variable to each other:
+Note: it's perfectly fine to unify two variables to each other:
 
 ```clj
 tut1=> (run* [q] (fresh [x y] (== x y) (== q [x y])))
