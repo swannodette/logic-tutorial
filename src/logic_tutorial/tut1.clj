@@ -1,10 +1,10 @@
 (ns logic-tutorial.tut1
   (:refer-clojure :exclude [==])
-  (:use [clojure.core.logic]))
+  (:use [clojure.core.logic.pldb]))
 
-(defrel parent x y)
-(defrel male x)
-(defrel female x)
+(db-rel parent x y)
+(db-rel male x)
+(db-rel female x)
 
 (defn child [x y]
   (parent y x))
