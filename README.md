@@ -11,7 +11,7 @@ This tutorial is very much a work in progress. It's possible to get through the 
 Why Logic Programming?
 ----
 
-What's the point of writing programs in the relational paradigm? First off, aesthetics dammit. 
+What's the point of writing programs in the relational paradigm? First off, aesthetics dammit.
 
 Logic programs are simply beautiful as they often have a declarative nature which trumps even the gems found in functional programming languages. Logic programs use search, and thus they are often not muddied up by algorithmic details. If you haven't tried Prolog before, relational programming will at times seem almost magical.
 
@@ -20,13 +20,13 @@ However, I admit, the most important reason to learn the relational paradigm is 
 First Steps
 ----
 
-Ok, we're ready to begin. Type <code>lein repl</code> or <code>cake repl</code>, this will drop you into the Clojure prompt. First lets double check that everything went ok. Enter the following at the Clojure REPL:
+Ok, we're ready to begin. Type `lein repl` or `cake repl`, this will drop you into the Clojure prompt. First lets double check that everything went ok. Enter the following at the Clojure REPL:
 
 ```clj
 user=> (require 'clojure.core.logic)
 ```
 
-The REPL should print nil and it should return control to you. If it doesn't file an issue for this tutorial and I'll look into it. If all goes well run the following:
+The REPL should print `nil` and it should return control to you. If it doesn't file an issue for this tutorial and I'll look into it. If all goes well run the following:
 
 ```clj
 user=> (load "logic_tutorial/tut1")
@@ -38,7 +38,7 @@ You'll see some harmless warnings, then run the following:
 user=> (in-ns 'logic-tutorial.tut1)
 ```
 
-Your prompt will change and you're now working in a place that has the magic of relational programming available to you. The REPL prompt will show <code>logic-tutorial.tut1</code>, we're going show <code>tut1</code> to keep things concise.
+Your prompt will change and you're now working in a place that has the magic of relational programming available to you. The REPL prompt will show `logic-tutorial.tut1`, we're going show `tut1` to keep things concise.
 
 Question & Answer
 ----
@@ -46,137 +46,155 @@ Question & Answer
 Unlike most programming systems, with relational programming we can actually ask the computer questions. But before we ask the computer questions, we need define some facts! The first thing we want the computer to know about is that there are men:
 
 ```clj
-tut1=> (defrel man x)
+tut1=> (db-rel man x)
 #'tut1/man
 ```
 
 And then we want to define some men:
 
 ```clj
-tut1=> (fact man 'Bob)
-nil
-tut1=> (fact man 'John)
+tut1=> (def men
+         (db
+           [man 'Bob]
+           [man 'John]))
 nil
 ```
 
-Now we can ask who are men. Questions are always asked with <code>run</code> or <code>run*</code>. By convention we'll declare a logic variable <code>q</code> and ask the computer to give use the possible values for <code>q</code>. Here's an example.
+Now we can ask who are men. Questions are always asked with `run` or `run*`. By convention we'll declare a logic variable `q` and ask the computer to give use the possible values for `q`. Here's an example.
 
 ```clj
-tut1=>  (run 1 [q] (man q))
+tut1=> (with-db men
+         (run 1 [q] (man q)))
 (John)
 ```
 
 We're asking the computer to give us at least one answer to the question - "Who is a man?".  We can ask for more than one answer:
 
 ```clj
-tut1=> (run 2 [q] (man q))
+tut1=> (with-db men
+         (run 2 [q] (man q)))
 (John Bob)
 ```
 
 Now that is pretty cool. What happens if we ask for even more answers?
 
 ```clj
-tut1=> (run 3 [q] (man q))
+tut1=> (with-db men
+         (run 3 [q] (man q)))
 (John Bob)
 ```
 
 The same result. That's because we’ve only told the computer that two men exist in the world. It can't give results for things it doesn't know about. Let's define another kind of relationship and a fact:
 
 ```clj
-tut1=> (defrel fun x)
+tut1=> (db-rel fun x)
 #'tut1/fun
-tut1=> (fact fun 'Bob)
+tut1=> (def fun-people
+         (db
+           [fun 'Bob]))
 nil
 ```
 
 Let's ask a new kind of question:
 
 ```clj
-tut1=> (run* [q] (man q) (fun q))
+tut1=> (with-dbs [men fun-people]
+         (run* [q]
+           (man q)
+           (fun q)))
 (Bob)
 ```
 
-There's a couple of new things going on here. We use <code>run\*</code>. This means we want all the answers the computer can find. The question itself is formulated differently than before because we're asking who is a man *and* is fun. Enter in the following:
+There's a couple of new things going on here. We use `run*`. This means we want all the answers the computer can find. The question itself is formulated differently than before because we're asking who is a man *and* is fun. Enter in the following:
 
 ```clj
-tut1=> (defrel woman x)
+tut1=> (db-rel woman x)
 #'tut1/woman
-tut1=> (fact woman 'Lucy)
+tut1=> (def facts
+         (db
+           [woman 'Lucy]
+           [woman 'Mary]))
 nil
-tut1=> (fact woman 'Mary)
-nil
-tut1=> (defrel likes x y)
+tut1=> (db-rel likes x y)
 #'tut1/likes
 ```
 
-Relations don't have to be a about a single entity. We can define relationship between things!
+We have now switched to a more generic name for the database of 'facts', which
+we will expand with facts about different relations. Relations don't have to be about a single entity. We can define relationship between things!
 
 ```clj
-tut1=> (fact likes 'Bob 'Mary)
+tut1=> (def facts
+         (-> facts
+           (db-fact likes 'Bob 'Mary)
+           (db-fact likes 'John 'Lucy)))
 nil
-tut1=> (fact likes 'John 'Lucy)
-nil
-tut1=> (run* [q] (likes 'Bob q))
+tut1=> (with-dbs [men facts] (run* [q] (likes 'Bob q)))
 (Mary)
 ```
 
-We can now ask who likes who! Let's try this:
+We've added two facts to the 'facts' database and can now ask who likes who!
+
+However, let's try this:
 
 ```clj
-tut1=> (run* [q] (likes 'Mary q))
+tut1=> (with-dbs [men facts] (run* [q] (likes 'Mary q))
 ()
 ```
 
 Hmm that doesn't work. This is because we never actually said *who Mary liked*, only that Bob liked Mary. Try the following:
 
 ```clj
-tut1=> (fact likes 'Mary 'Bob)
+tut1=> (def facts (db-fact facts likes 'Mary 'Bob))
 nil
-tut1=> (run* [q] (fresh [x y] (likes x y) (== q [x y])))
+tut1=> (with-dbs [men facts] (run* [q] (fresh [x y] (likes x y) (== q [x y]))))
 ([Mary Bob] [Bob Mary] [John Lucy])
 ```
 
-Wow that's a lot of new information. The fresh expression isn't something we've seen before. Why do we need it? By convention <code>run</code> returns single values for <code>q</code> which answer the question. In this case we want to know who likes who. This means we need to create logic variables to store these values in. We then assign both these values to <code>q</code> by putting them in a Clojure vector (which is like an array in other programming languages).
+Wow that's a lot of new information. The fresh expression isn't something we've seen before. Why do we need it? By convention `run` returns single values for `q` which answer the question. In this case we want to know who likes who. This means we need to create logic variables to store these values in. We then assign both these values to `q` by putting them in a Clojure vector (which is like an array in other programming languages).
 
 Try the following:
 
 ```clj
-tut1=> (run* [q] (fresh [x y] (likes x y) (likes y x) (== q [x y])))
+tut1=> (with-dbs [men facts] (run* [q] (fresh [x y] (likes x y) (likes y x) (== q [x y]))))
 ([Mary Bob] [Bob Mary])
 ```
 
-Here we only want the list of people who like each other. Note that the order of how we pose our question doesn't really matter:
+Here we only want the list of people who like each other. Note that the order of how we pose our question doesn't matter:
 
 ```clj
-tut1=> (run* [q] (fresh [x y] (likes x y) (== q [x y]) (likes y x)))
+tut1=> (with-dbs [men facts] (run* [q] (fresh [x y] (likes x y) (== q [x y]) (likes y x))))
 ([Mary Bob] [Bob Mary])
 ```
 
 Some Genealogy
 ----
 
-We've actually predefined some interesting relations in the <code>tut1</code> file that we'll try out first before we take a closer look:
+We've actually predefined some interesting relations in the `tut1` file that we'll try out first before we take a closer look:
 
 ```clj
-tut1=> (fact parent 'John 'Bobby)
-nil
-tut1=> (fact male 'Bobby)
+tut1=> (def genealogy
+         (db
+           [parent 'John 'Bobby]
+           [male 'Bobby]))
 nil
 ```
-
 We can now run this query:
 
 ```clj
-tut1=> (run* [q] (son q 'John))
+tut1=> (with-db genealogy
+         (run* [q]
+           (son q 'John)))
 (Bobby)
 ```
 
 Let's add another fact:
 
 ```clj
-tut1=> (fact parent 'George 'John) 
+tut1=> (def genealogy
+         (-> genealogy
+           (db-fact parent 'George 'John)))
 nil
-tut1=> (run* [q] (grandparent q 'Bobby))
+tut1=> (with-db genealogy (run* [q] (grandparent q 'Bobby)))
 (George)
 ```
 
@@ -185,9 +203,9 @@ Huzzah! We can define relations in terms of other relations! Composition to the 
 Let's take a moment to look at what's in the file. At the top of the file after the namespace declaration you'll see that some relations have been defined:
 
 ```clj
-(defrel parent x y)
-(defrel male x)
-(defrel female x)
+(db-rel parent x y)
+(db-rel male x)
+(db-rel female x)
 ```
 
 After this there are some functions:
@@ -212,21 +230,21 @@ We can define relations as functions! Play around with defining some new facts a
 Primitives
 ----
 
-Let's step back for a moment. <code>core.logic</code> is built upon a small set of primitives - they are <code>run</code>, <code>fresh</code>, <code>==</code>, and <code>conde</code>. We're already pretty familiar with <code>run</code>, <code>fresh</code>, and <code>==</code>. <code>run</code> is simple, it let's us <code>run</code> our logic programs. <code>fresh</code> is also pretty simple, it lets us declare new logic variables. <code>==</code> is a bit mysterious and we've never even seen <code>conde</code> before.
+Let's step back for a moment. `core.logic` is built upon a small set of primitives - they are `run`, `fresh`, `==`, and `conde`. We're already pretty familiar with `run`, `fresh`, and `==`. `run` is simple, it let's us `run` our logic programs. `fresh` is also pretty simple, it lets us declare new logic variables. `==` is a bit mysterious and we've never even seen `conde` before.
 
 Unification
 ----
 
-Earlier I lied about assignment when using the <code>==</code> operator. The <code>==</code> operator means that we want to unify two terms. This means we'd like the computer to take two things and attempt to make them equal. If logic variables occur in either of the terms, the computer will try to bind that logic variable to what ever value matches in the other term. If the computer can't make two terms equal, it fails - this is why sometimes we don't see any results.
+Earlier I lied about assignment when using the `==` operator. The `==` operator means that we want to unify two terms. This means we'd like the computer to take two things and attempt to make them equal. If logic variables occur in either of the terms, the computer will try to bind that logic variable to what ever value matches in the other term. If the computer can't make two terms equal, it fails - this is why sometimes we don't see any results.
 
 Consider the following:
 
 ```clj
 tut1=> (run* [q] (== 5 5))
-(_.0)
+(_0)
 ```
 
-Whoa, what does that mean? It means that our question was fine, but that we never actually unified <code>q</code> with anything - <code>_.0</code> just means we have a logic variable that was never bound to a concrete value.
+Whoa, what does that mean? It means that our question was fine, but that we never actually unified `q` with anything - `_0` just means we have a logic variable that was never bound to a concrete value.
 
 ```clj
 tut1=> (run* [q] (== 5 4))
@@ -236,7 +254,7 @@ tut1=> (run* [q] (== 5 4))
 It's impossible to make 5 and 4 equal to each other, the computer lets us know that no successful answers exist for the question we posed.
 
 ```clj
-tut1=> (run* [q] (== q 5) (== q 5))
+tut1=> (run* [q] (== q 5))
 (5)
 tut1=> (run* [q] (== q 5) (== q 4))
 ()
@@ -251,13 +269,13 @@ tut1=> (run* [q] (fresh [x y] (== [x 2] [1 y]) (== q [x y])))
 ([1 2])
 ```
 
-This shows that in order for the two terms <code>[x 2]</code> and <code>[1 y]</code> to be unified, the logic variable <code>x</code> must be bound to 1 and the logic variable <code>y</code> must be bound to 2.
+This shows that in order for the two terms `[x 2]` and `[1 y]` to be unified, the logic variable `x` must be bound to 1 and the logic variable `y` must be bound to 2.
 
 Note: it's perfectly fine to unify two variables to each other:
 
 ```clj
 tut1=> (run* [q] (fresh [x y] (== x y) (== q [x y])))
-([_.0 _.0])
+([_0 _0])
 tut1=> (run* [q] (fresh [x y] (== x y) (== y 1) (== q [x y])))
 ([1 1])
 ```
@@ -268,30 +286,31 @@ Multiple Universes
 By now we're already familiar with conjuction, that is, logical **and**.
 
 ```clj
-(run* [q] (fun q) (likes q 'Mary))
+(with-dbs [facts fun-people] (run* [q] (fun q) (likes q 'Mary)))
 ```
 
-We know now to read this as find <code>q</code> such that <code>q</code> is fun **and** <code>q</code> likes Mary.
+We know now to read this as find `q` such that `q` is fun **and** `q` likes Mary.
 
 But how to express logical **or**?
 
 ```clj
-(run* [q]
-  (conde
-    ((fun q))
-    ((likes q 'Mary))))
+(with-dbs [facts fun-people]
+  (run* [q]
+    (conde
+      ((fun q))
+      ((likes q 'Mary)))))
 ```
 
-The above does exactly that - find <code>q</code> such that <code>q</code> is fun *or* <code>q</code> likes Mary. This is the essence of how we get multiple answers from <code>core.logic</code>.
+The above does exactly that - find `q` such that `q` is fun *or* `q` likes Mary. This is the essence of how we get multiple answers from `core.logic`.
 
 Magic Tricks
 ----
 
-By now we're tired of genealogy. Let's go back to the cozy world of Computer Science. One of the very first things people introduce in CS are arrays and/or lists. It’s often convenient to take two lists and join them together. In Clojure this functionality exists via <code>concat</code>. However we're going to look at a relational version of the function called <code>appendo</code>. While <code>appendo</code> is certainly slower than <code>concat</code> it has magical powers that <code>concat</code> does not have.
+By now we're tired of genealogy. Let's go back to the cozy world of Computer Science. One of the very first things people introduce in CS are arrays and/or lists. It’s often convenient to take two lists and join them together. In Clojure this functionality exists via `concat`. However we're going to look at a relational version of the function called `appendo`. While `appendo` is certainly slower than `concat` it has magical powers that `concat` does not have.
 
 First we'll want to load the next tutorial and switch into it's namespace.
 
-Note: Since core.logic 0.6.3, <code>appendo</code> has been included in core.logic itself.
+Note: Since core.logic 0.6.3, `appendo` has been included in core.logic itself.
 
 ```clj
 tut1=> (in-ns 'user)
@@ -304,7 +323,7 @@ nil
 
 Relational functions are written quite differently than their functional counterparts. Instead of return value, we usually make the final parameter be output variable that we'll unify the answer to. This makes it easier to compose relations together. This also means that relational programs in general look quite different from functional programs.
 
-Open <code>src/logic-tutorial/tut2.clj</code>. You'll find the definition for <code>appendo</code>.
+Open `src/logic-tutorial/tut2.clj`. You'll find the definition for `appendo`.
 
 ```clj
 (defn appendo [l1 l2 o]
@@ -322,17 +341,17 @@ Now try the following:
 
 ```clj
 tut2=> (run* [q] (appendo [1 2] [3 4] q))
-([1 2 3 4])
+((1 2 3 4))
 ```
 
 Seems reasonable. Now try this:
 
 ```clj
 tut2=> (run* [q] (appendo [1 2] q [1 2 3 4]))
-([3 4])
+((3 4))
 ```
 
-Note that <code>appendo</code> can infer it's inputs!
+Note that `appendo` can infer it's inputs!
 
 There’s actually a short hand for writing appendo, we can write it like this. This is pattern matching - it can decrease the amount of boiler plate we have to write for many programs.
 
@@ -343,7 +362,7 @@ There's a classic old puzzle sometimes referred to as the Zebra puzzle, sometime
 
 The puzzle is described in the following manner.
 
-If you look in <code>src/logic_tutorial/tut3.clj</code> you'll find the following code:
+If you look in `src/logic_tutorial/tut3.clj` you'll find the following code:
 
 ```clj
 (defne righto [x y l]
@@ -358,19 +377,19 @@ If you look in <code>src/logic_tutorial/tut3.clj</code> you'll find the followin
 (defn zebrao [hs]
   (macro/symbol-macrolet [_ (lvar)]
     (all
-     (== [_ _ [_ _ 'milk _ _] _ _] hs)                         
-     (firsto hs ['norwegian _ _ _ _])                         
-     (nexto ['norwegian _ _ _ _] [_ _ _ _ 'blue] hs)       
-     (righto [_ _ _ _ 'ivory] [_ _ _ _ 'green] hs)         
-     (membero ['englishman _ _ _ 'red] hs)                    
-     (membero [_ 'kools _ _ 'yellow] hs)                      
-     (membero ['spaniard _ _ 'dog _] hs)                      
-     (membero [_ _ 'coffee _ 'green] hs)                      
-     (membero ['ukrainian _ 'tea _ _] hs)                     
-     (membero [_ 'lucky-strikes 'oj _ _] hs)                  
-     (membero ['japanese 'parliaments _ _ _] hs)              
-     (membero [_ 'oldgolds _ 'snails _] hs)                   
-     (nexto [_ _ _ 'horse _] [_ 'kools _ _ _] hs)          
+     (== [_ _ [_ _ 'milk _ _] _ _] hs)
+     (firsto hs ['norwegian _ _ _ _])
+     (nexto ['norwegian _ _ _ _] [_ _ _ _ 'blue] hs)
+     (righto [_ _ _ _ 'ivory] [_ _ _ _ 'green] hs)
+     (membero ['englishman _ _ _ 'red] hs)
+     (membero [_ 'kools _ _ 'yellow] hs)
+     (membero ['spaniard _ _ 'dog _] hs)
+     (membero [_ _ 'coffee _ 'green] hs)
+     (membero ['ukrainian _ 'tea _ _] hs)
+     (membero [_ 'lucky-strikes 'oj _ _] hs)
+     (membero ['japanese 'parliaments _ _ _] hs)
+     (membero [_ 'oldgolds _ 'snails _] hs)
+     (nexto [_ _ _ 'horse _] [_ 'kools _ _ _] hs)
      (nexto [_ _ _ 'fox _] [_ 'chesterfields _ _ _] hs))))
 ```
 
