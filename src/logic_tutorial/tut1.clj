@@ -1,5 +1,6 @@
 (ns logic-tutorial.tut1
   (:refer-clojure :exclude [==])
+  (:use [clojure.core.logic])
   (:use [clojure.core.logic.pldb]))
 
 (db-rel parent x y)
