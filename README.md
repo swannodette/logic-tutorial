@@ -137,7 +137,7 @@ We've added two facts to the 'facts' database and can now ask who likes who!
 However, let's try this:
 
 ```clj
-tut1=> (with-dbs [men facts] (run* [q] (likes 'Mary q))
+tut1=> (with-dbs [men facts] (run* [q] (likes 'Mary q)))
 ()
 ```
 
