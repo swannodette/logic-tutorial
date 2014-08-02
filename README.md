@@ -230,7 +230,7 @@ We can define relations as functions! Play around with defining some new facts a
 Primitives
 ----
 
-Let's step back for a moment. `core.logic` is built upon a small set of primitives - they are `run`, `fresh`, `==`, and `conde`. We're already pretty familiar with `run`, `fresh`, and `==`. `run` is simple, it let's us `run` our logic programs. `fresh` is also pretty simple, it lets us declare new logic variables. `==` is a bit mysterious and we've never even seen `conde` before.
+Let's step back for a moment. `core.logic` is built upon a small set of primitives - they are `run`, `fresh`, `==`, and `conde`. We're already pretty familiar with `run`, `fresh`, and `==`. `run` is simple, it lets us `run` our logic programs. `fresh` is also pretty simple, it lets us declare new logic variables. `==` is a bit mysterious and we've never even seen `conde` before.
 
 Unification
 ----
@@ -308,7 +308,7 @@ Magic Tricks
 
 By now we're tired of genealogy. Let's go back to the cozy world of Computer Science. One of the very first things people introduce in CS are arrays and/or lists. It’s often convenient to take two lists and join them together. In Clojure this functionality exists via `concat`. However we're going to look at a relational version of the function called `appendo`. While `appendo` is certainly slower than `concat` it has magical powers that `concat` does not have.
 
-First we'll want to load the next tutorial and switch into it's namespace.
+First we'll want to load the next tutorial and switch into its namespace.
 
 Note: Since core.logic 0.6.3, `appendo` has been included in core.logic itself.
 
@@ -335,7 +335,7 @@ Open `src/logic-tutorial/tut2.clj`. You'll find the definition for `appendo`.
        (appendo d l2 r)))))
 ```
 
-We can pass in logic variables in any one of it's three arguments.
+We can pass in logic variables in any one of its three arguments.
 
 Now try the following:
 
@@ -351,7 +351,7 @@ tut2=> (run* [q] (appendo [1 2] q [1 2 3 4]))
 ((3 4))
 ```
 
-Note that `appendo` can infer it's inputs!
+Note that `appendo` can infer its inputs!
 
 There’s actually a short hand for writing appendo, we can write it like this. This is pattern matching - it can decrease the amount of boiler plate we have to write for many programs.
 
