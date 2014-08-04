@@ -20,7 +20,10 @@ However, I admit, the most important reason to learn the relational paradigm is 
 First Steps
 ----
 
-Ok, we're ready to begin. Type `lein repl` or `cake repl`, this will drop you into the Clojure prompt. First lets double check that everything went ok. Enter the following at the Clojure REPL:
+1. Install `lein` following [instructions here](http://leiningen.org/#install)
+2. `git clone https://github.com/swannodette/logic-tutorial && cd logic-tutorial`
+
+Ok, we're ready to begin. Type `lein repl`, which will drop you into the Clojure prompt. First let's double check that everything went ok. Enter the following at the Clojure REPL:
 
 ```clj
 user=> (require 'clojure.core.logic)
