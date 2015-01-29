@@ -38,7 +38,7 @@ user=> (load "logic_tutorial/tut1")
 You'll see some harmless warnings, then run the following:
 
 ```clj
-user=> (in-ns 'logic-tutorial.tut1)
+user=> (in-ns 'logic-tutorial.tut1')
 ```
 
 Your prompt will change and you're now working in a place that has the magic of relational programming available to you. The REPL prompt will show `logic-tutorial.tut1`, we're going show `tut1` to keep things concise.
