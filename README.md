@@ -356,7 +356,48 @@ tut2=> (run* [q] (appendo [1 2] q [1 2 3 4]))
 
 Note that `appendo` can infer its inputs!
 
-There’s actually a short hand for writing appendo, we can write it like this. This is pattern matching - it can decrease the amount of boiler plate we have to write for many programs.
+`appendo` is a rather pretty mixture of logic and functional programming. It employs
+a very functional idiom of using recursion to process list but the result it builds up
+is not itself a list but logic goals, e.g. assertions about the contents of the output `o`.
+`appendo` works by repeatedly unifying the first element of `l1` with that of `o` (using `conso`)
+and then calling itself recursively to do the same for the list tails. When it reaches
+the base case, `l1` is the empty list and all that remains is to unify all of `l2` with
+the tail of `o`.
+
+`conso` is a relational version of (scheme's) `cons` and `(conso a b o)` can be read as
+the goal "unify the result of consing `b` onto `a` with `c`" and although you cannot
+mix regular clojure functions with logic variables in this way, it corresponds roughly
+to what you'd expect `(== (cons a b) o)` to do.
+
+Before moving on let's get a little taste of `core.logic`'s pattern matching support. Pattern
+matching is a powerful and concise way to express behavior and `core.logic` tries to
+make good use of its expressive power. The `defne` macro let's you express
+conjugations of goals just as `conde` while making use of pattern matching. Here's what
+`appendo` looks like:
+
+```clj
+(defne appendo [l1 l2 o]
+  ([[] _ _] (== o l2))
+  ([[?a . ?d] _ [?a . ?r]] (appendo ?d l2 ?r))
+  )
+```
+
+First, note the absence of a `fresh` call -- `defne` allows us to define fresh
+variables implicitly. By convention these should bear names beginning with '?'.
+We have two clauses here and the first corresponds to the base case we saw earlier:
+"if l1 is an empty collection (and no matter what `l2` and `o` are) => unify `o` and `l2`"
+The second clause uses destructuring syntax instead of `conso` to unify the head
+of `l1` and `l2` and then asserts the goal(s) arising from calling `appendo` on
+the tails in the same way seen earlier. Let's test it:
+
+
+```clj
+tut2=> (run* [q] (appendo [1 2] q [1 2 3 4]))
+((3 4))
+```
+
+we got the same answer as before. good.
+
 
 Zebras
 ----
