@@ -313,7 +313,7 @@ By now we're tired of genealogy. Let's go back to the cozy world of Computer Sci
 
 First we'll want to load the next tutorial and switch into its namespace.
 
-Note: Since core.logic 0.6.3, `appendo` has been included in core.logic itself.
+Note: Since `core.logic` 0.6.3, `appendo` has been included in `core.logic` itself.
 
 ```clj
 tut1=> (in-ns 'user)
@@ -409,14 +409,14 @@ But how fast is it?
 tut3=> (dotimes [_ 100] (time (doall (run 1 [q] (zebrao q)))))
 ```
 
-On my machine, after the JVM has had time to warm up, I see the puzzle can be solved in as little as 3 milliseconds. The Zebra puzzle in and of itself is hardly very interesting. However if such complex constraints can be described and solved so quickly, <code>core.logic</code> is very likely fast enough to be applied to reasoning about types! Only time will tell, but I encourage people to investigate such applications.
+On my machine, after the JVM has had time to warm up, I see the puzzle can be solved in as little as 3 milliseconds. The Zebra puzzle in and of itself is hardly very interesting. However if such complex constraints can be described and solved so quickly, `core.logic` is very likely fast enough to be applied to reasoning about types! Only time will tell, but I encourage people to investigate such applications.
 
 Next Steps
 ----
 
 Hopefully this short tutorial has revealed some of the beauty of relational programming. To be sure, relational programming as I've presented here has its limitations. Yet, people are actively working on surmounting those limitations in more ways than I really have time to document here.
 
-While you can get along just fine as a programmer without using relational programming, many aspects of the tools we use today will seem mysterious without a basic understanding of how relational programming works. It also allows us to add features to our languages that are otherwise harder to implement. For example the elegant type systems (and type inferencing) found in Standard ML and Haskell would be fascinating to model via **core.logic**. I also think that an efficient predicate dispatch system that gives ML pattern matching performance with the open-ended nature of CLOS generic methods would be easily achievable via **core.logic**.
+While you can get along just fine as a programmer without using relational programming, many aspects of the tools we use today will seem mysterious without a basic understanding of how relational programming works. It also allows us to add features to our languages that are otherwise harder to implement. For example the elegant type systems (and type inferencing) found in Standard ML and Haskell would be fascinating to model via `core.logic`. I also think that an efficient predicate dispatch system that gives ML pattern matching performance with the open-ended nature of CLOS generic methods would be easily achievable via `core.logic`.
 
 Resources
 ---
