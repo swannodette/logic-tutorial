@@ -286,7 +286,7 @@ tut1=> (run* [q] (fresh [x y] (== x y) (== y 1) (== q [x y])))
 Multiple Universes
 ----
 
-By now we're already familiar with conjuction, that is, logical **and**.
+By now we're already familiar with conjunction, that is, logical **and**.
 
 ```clj
 (with-dbs [facts fun-people] (run* [q] (fun q) (likes q 'Mary)))
