@@ -304,7 +304,7 @@ But how to express logical **or**?
       ((likes q 'Mary)))))
 ```
 
-The above does exactly that - find `q` such that `q` is fun *or* `q` likes Mary. This is the essence of how we get multiple answers from `core.logic`.
+The above does exactly that – find `q` such that `q` is fun *or* `q` likes Mary. This is the essence of how we get multiple answers from `core.logic`.
 
 Magic Tricks
 ----
@@ -356,12 +356,12 @@ tut2=> (run* [q] (appendo [1 2] q [1 2 3 4]))
 
 Note that `appendo` can infer its inputs!
 
-There’s actually a short hand for writing appendo, we can write it like this. This is pattern matching - it can decrease the amount of boiler plate we have to write for many programs.
+There’s actually a shorthand for writing appendo, we can write it like this. This is pattern matching – it can decrease the amount of boilerplate we have to write for many programs.
 
 Zebras
 ----
 
-There's a classic old puzzle sometimes referred to as the Zebra puzzle, sometimes as Einstein's puzzle. Writing an algorithm for solving the constraint is a bit tedious - relational programming allows us to just describe the constraints and it can produce the correct answer for us.
+There's a classic old puzzle sometimes referred to as the Zebra puzzle, sometimes as Einstein's puzzle. Writing an algorithm for solving the constraint is a bit tedious – relational programming allows us to just describe the constraints and it can produce the correct answer for us.
 
 The puzzle is described in the following manner.
 
@@ -421,7 +421,7 @@ While you can get along just fine as a programmer without using relational progr
 Resources
 ---
 
-If you found this tutorial interesting and would like to learn more I recommend the following books to further you understanding of the relational paradigm.
+If you found this tutorial interesting and would like to learn more I recommend the following books to further your understanding of the relational paradigm.
 
 * [The Reasoned Schemer](http://mitpress.mit.edu/catalog/item/default.asp?ttype=2&tid=10663)
 * [Paradigms of Artificial Intelligence Programming](http://norvig.com/paip.html)
