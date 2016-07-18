@@ -238,7 +238,7 @@ Let's step back for a moment. `core.logic` is built upon a small set of primitiv
 Unification
 ----
 
-Earlier I lied about assignment when using the `==` operator. The `==` operator means that we want to unify two terms. This means we'd like the computer to take two things and attempt to make them equal. If logic variables occur in either of the terms, the computer will try to bind that logic variable to what ever value matches in the other term. If the computer can't make two terms equal, it fails - this is why sometimes we don't see any results.
+Earlier I lied about assignment when using the `==` operator. The `==` operator means that we want to unify two terms. This means we'd like the computer to take two things and attempt to make them equal. If logic variables occur in either of the terms, the computer will try to bind that logic variable to whatever value matches in the other term. If the computer can't make two terms equal, it fails – this is why sometimes we don't see any results.
 
 Consider the following:
 
@@ -247,7 +247,7 @@ tut1=> (run* [q] (== 5 5))
 (_0)
 ```
 
-Whoa, what does that mean? It means that our question was fine, but that we never actually unified `q` with anything - `_0` just means we have a logic variable that was never bound to a concrete value.
+Whoa, what does that mean? It means that our question was fine, but that we never actually unified `q` with anything – `_0` just means we have a logic variable that was never bound to a concrete value.
 
 ```clj
 tut1=> (run* [q] (== 5 4))
