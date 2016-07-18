@@ -63,7 +63,7 @@ tut1=> (def men
 nil
 ```
 
-Now we can ask who are men. Questions are always asked with `run` or `run*`. By convention we'll declare a logic variable `q` and ask the computer to give use the possible values for `q`. Here's an example.
+Now we can ask who are men. Questions are always asked with `run` or `run*`. By convention we'll declare a logic variable `q` and ask the computer to give us the possible values for `q`. Here's an example.
 
 ```clj
 tut1=> (with-db men
