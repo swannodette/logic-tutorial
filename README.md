@@ -123,7 +123,7 @@ tut1=> (db-rel likes x y)
 ```
 
 We have now switched to a more generic name for the database of 'facts', which
-we will expand with facts about different relations. Relations don't have to be about a single entity. We can define relationship between things!
+we will expand with facts about different relations. Relations don't have to be about a single entity. We can define relationships between things!
 
 ```clj
 tut1=> (def facts
