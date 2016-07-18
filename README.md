@@ -63,7 +63,7 @@ tut1=> (def men
 nil
 ```
 
-Now we can ask who are men. Questions are always asked with `run` or `run*`. By convention we'll declare a logic variable `q` and ask the computer to give use the possible values for `q`. Here's an example.
+Now we can ask who are men. Questions are always asked with `run` or `run*`. By convention we'll declare a logic variable `q` and ask the computer to give us the possible values for `q`. Here's an example.
 
 ```clj
 tut1=> (with-db men
@@ -123,7 +123,7 @@ tut1=> (db-rel likes x y)
 ```
 
 We have now switched to a more generic name for the database of 'facts', which
-we will expand with facts about different relations. Relations don't have to be about a single entity. We can define relationship between things!
+we will expand with facts about different relations. Relations don't have to be about a single entity. We can define relationships between things!
 
 ```clj
 tut1=> (def facts
@@ -238,7 +238,7 @@ Let's step back for a moment. `core.logic` is built upon a small set of primitiv
 Unification
 ----
 
-Earlier I lied about assignment when using the `==` operator. The `==` operator means that we want to unify two terms. This means we'd like the computer to take two things and attempt to make them equal. If logic variables occur in either of the terms, the computer will try to bind that logic variable to what ever value matches in the other term. If the computer can't make two terms equal, it fails - this is why sometimes we don't see any results.
+Earlier I lied about assignment when using the `==` operator. The `==` operator means that we want to unify two terms. This means we'd like the computer to take two things and attempt to make them equal. If logic variables occur in either of the terms, the computer will try to bind that logic variable to whatever value matches in the other term. If the computer can't make two terms equal, it fails – this is why sometimes we don't see any results.
 
 Consider the following:
 
@@ -247,7 +247,7 @@ tut1=> (run* [q] (== 5 5))
 (_0)
 ```
 
-Whoa, what does that mean? It means that our question was fine, but that we never actually unified `q` with anything - `_0` just means we have a logic variable that was never bound to a concrete value.
+Whoa, what does that mean? It means that our question was fine, but that we never actually unified `q` with anything – `_0` just means we have a logic variable that was never bound to a concrete value.
 
 ```clj
 tut1=> (run* [q] (== 5 4))
@@ -304,7 +304,7 @@ But how to express logical **or**?
       ((likes q 'Mary)))))
 ```
 
-The above does exactly that - find `q` such that `q` is fun *or* `q` likes Mary. This is the essence of how we get multiple answers from `core.logic`.
+The above does exactly that – find `q` such that `q` is fun *or* `q` likes Mary. This is the essence of how we get multiple answers from `core.logic`.
 
 Magic Tricks
 ----
@@ -356,12 +356,12 @@ tut2=> (run* [q] (appendo [1 2] q [1 2 3 4]))
 
 Note that `appendo` can infer its inputs!
 
-There’s actually a short hand for writing appendo, we can write it like this. This is pattern matching - it can decrease the amount of boiler plate we have to write for many programs.
+There’s actually a shorthand for writing appendo, we can write it like this. This is pattern matching – it can decrease the amount of boilerplate we have to write for many programs.
 
 Zebras
 ----
 
-There's a classic old puzzle sometimes referred to as the Zebra puzzle, sometimes as Einstein's puzzle. Writing an algorithm for solving the constraint is a bit tedious - relational programming allows us to just describe the constraints and it can produce the correct answer for us.
+There's a classic old puzzle sometimes referred to as the Zebra puzzle, sometimes as Einstein's puzzle. Writing an algorithm for solving the constraint is a bit tedious – relational programming allows us to just describe the constraints and it can produce the correct answer for us.
 
 The puzzle is described in the following manner.
 
@@ -421,7 +421,7 @@ While you can get along just fine as a programmer without using relational progr
 Resources
 ---
 
-If you found this tutorial interesting and would like to learn more I recommend the following books to further you understanding of the relational paradigm.
+If you found this tutorial interesting and would like to learn more I recommend the following books to further your understanding of the relational paradigm.
 
 * [The Reasoned Schemer](http://mitpress.mit.edu/catalog/item/default.asp?ttype=2&tid=10663)
 * [Paradigms of Artificial Intelligence Programming](http://norvig.com/paip.html)
