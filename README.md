@@ -46,7 +46,7 @@ Your prompt will change and you're now working in a place that has the magic of 
 Question & Answer
 ----
 
-Unlike most programming systems, with relational programming we can actually ask the computer questions. But before we ask the computer questions, we need define some facts! The first thing we want the computer to know about is that there are men:
+Unlike most programming systems, with relational programming we can actually ask the computer questions. But before we ask the computer questions, we need to define some facts! The first thing we want the computer to know about is that there are men:
 
 ```clj
 tut1=> (db-rel man x)
