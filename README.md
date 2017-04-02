@@ -46,7 +46,7 @@ Your prompt will change and you're now working in a place that has the magic of 
 Question & Answer
 ----
 
-Unlike most programming systems, with relational programming we can actually ask the computer questions. But before we ask the computer questions, we need define some facts! The first thing we want the computer to know about is that there are men:
+Unlike most programming systems, with relational programming we can actually ask the computer questions. But before we ask the computer questions, we need to define some facts! The first thing we want the computer to know about is that there are men:
 
 ```clj
 tut1=> (db-rel man x)
@@ -324,7 +324,7 @@ user=> (in-ns 'logic-tutorial.tut2)
 nil
 ```
 
-Relational functions are written quite differently than their functional counterparts. Instead of return value, we usually make the final parameter be output variable that we'll unify the answer to. This makes it easier to compose relations together. This also means that relational programs in general look quite different from functional programs.
+Relational functions are written quite differently than their functional counterparts. Instead of return value, we usually make the final parameter be an output variable that we'll unify the answer to. This makes it easier to compose relations together. This also means that relational programs in general look quite different from functional programs.
 
 Open `src/logic-tutorial/tut2.clj`. You'll find the definition for `appendo`.
 
