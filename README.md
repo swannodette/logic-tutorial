@@ -1,7 +1,7 @@
 A Very Gentle Introduction To Relational & Functional Programming
 ====
 
-This tutorial will guide you through the magic and fun of combining relational programming (also known as logic programming) with functional programming. This tutorial does not assume that you have any knowledge of Lisp, Clojure, Java, or even functional programming. The only thing this tutorial assumes is that you are not afraid of using the command line and you have used at least one programming language before in your life.
+This tutorial will guide you through the magic and fun of combining relational programming (also known as logic programming) with functional programming. This tutorial does not assume that you have any knowledge of Lisp, Clojure, Java, or even functional programming. The only thing this tutorial assumes is that you are not afraid of using the command line and that you have used at least one programming language before.
 
 Work in Progress
 ----
@@ -427,4 +427,3 @@ If you found this tutorial interesting and would like to learn more I recommend 
 * [Paradigms of Artificial Intelligence Programming](http://norvig.com/paip.html)
 * [Prolog Programming For Artificial Intelligence](http://www.amazon.com/Prolog-Programming-Artificial-Intelligence-Bratko/dp/0201403757)
 * [Concepts, Techniques, and Models of Computer Programming](http://www.info.ucl.ac.be/~pvr/book.html)
-
