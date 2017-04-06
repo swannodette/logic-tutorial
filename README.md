@@ -20,7 +20,7 @@ However, I admit, the most important reason to learn the relational paradigm is 
 First Steps
 ----
 
-1. Install `lein` following [instructions here](http://leiningen.org/#install)
+1. Install `lein` by following the [instructions here](http://leiningen.org/#install)
 2. `git clone https://github.com/swannodette/logic-tutorial && cd logic-tutorial`
 
 Ok, we're ready to begin. Type `lein repl`, which will drop you into the Clojure prompt. First let's double check that everything went ok. Enter the following at the Clojure REPL:
@@ -63,7 +63,7 @@ tut1=> (def men
 nil
 ```
 
-Now we can ask who are men. Questions are always asked with `run` or `run*`. By convention we'll declare a logic variable `q` and ask the computer to give use the possible values for `q`. Here's an example.
+Now we can ask who are men. Questions are always asked with `run` or `run*`. By convention we'll declare a logic variable `q` and ask the computer to give us the possible values for `q`. Here's an example.
 
 ```clj
 tut1=> (with-db men
