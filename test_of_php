@@ -1,0 +1,12 @@
+<?php 
+$file_name="test.txt";
+$handler=fopen($file_name,"rb");
+while(false!==$file=feof($handler)){
+  $contents.=fgetc($file);
+}
+echo $contents;
+
+?>
+//This code is just for test open a file ,and read the contents in in ,next print all it out ,just for fun
+//Hello firends,I am a colleage student in China ,Now ,I have  learn PHP for two months by myself,but I do not how to learn it well ,so i
+want all of you can give me some adivce about how to learn a proageamming,Thanks all of you !
