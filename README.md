@@ -1,7 +1,7 @@
 A Very Gentle Introduction To Relational & Functional Programming
 ====
 
-This tutorial will guide you through the magic and fun of combining relational programming (also known as logic programming) with functional programming. This tutorial does not assume that you have any knowledge of Lisp, Clojure, Java, or even functional programming. The only thing this tutorial assumes is that you are not afraid of using the command line and you have used at least one programming language before in your life.
+This tutorial will guide you through the magic and fun of combining relational programming (also known as logic programming) with functional programming. Background knowledge of Lisp, Clojure, Java, or even functional programming is not required. The only thing required is that you are not afraid of using the command line and you have used at least one programming language before in your life.
 
 Work in Progress
 ----
@@ -233,12 +233,12 @@ We can define relations as functions! Play around with defining some new facts a
 Primitives
 ----
 
-Let's step back for a moment. `core.logic` is built upon a small set of primitives - they are `run`, `fresh`, `==`, and `conde`. We're already pretty familiar with `run`, `fresh`, and `==`. `run` is simple, it lets us `run` our logic programs. `fresh` is also pretty simple, it lets us declare new logic variables. `==` is a bit mysterious and we've never even seen `conde` before.
+Let's step back for a moment. `core.logic` is built upon a small set of primitives. They are `run`, `fresh`, `==`, and `conde`. We're already pretty familiar with `run`, `fresh`, and `==`. `run` is simple, it lets us `run` our logic programs. `fresh` is also pretty straight forward, it lets us declare new logic variables. `==` is a bit mysterious and we've never even seen `conde` before.
 
 Unification
 ----
 
-Earlier I lied about assignment when using the `==` operator. The `==` operator means that we want to unify two terms. This means we'd like the computer to take two things and attempt to make them equal. If logic variables occur in either of the terms, the computer will try to bind that logic variable to what ever value matches in the other term. If the computer can't make two terms equal, it fails - this is why sometimes we don't see any results.
+Earlier I lied about assignment when using the `==` operator. The `==` operator means that we want to unify two terms. This means we'd like the computer to take two things and attempt to make them equal. If logic variables occur in either of the terms, the computer will try to bind that logic variable to what ever value matches in the other term. If the computer can't make two terms equal, it fails. That  is why sometimes we don't see any results.
 
 Consider the following:
 
@@ -263,7 +263,7 @@ tut1=> (run* [q] (== q 5) (== q 4))
 ()
 ```
 
-Once we've unified a logic variable to a concrete value we can unify it again with that value, but we cannot unify with a concrete value that is not equal to what it is currently bound to.
+Once we've unified a logic variable to a concrete value we can unify it again with that value. But we cannot unify with a concrete value that is not equal to what it is currently bound to.
 
 Here's an example showing that we can unify complex terms:
 
