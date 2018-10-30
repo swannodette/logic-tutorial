@@ -423,8 +423,7 @@ Resources
 
 If you found this tutorial interesting and would like to learn more I recommend the following books to further you understanding of the relational paradigm.
 
-* [The Reasoned Schemer](http://mitpress.mit.edu/catalog/item/default.asp?ttype=2&tid=10663)
-* [Paradigms of Artificial Intelligence Programming](http://norvig.com/paip.html)
+* [The Reasoned Schemer](http://mitpress.mit.edu/books/reasoned-schemer-second-edition)
+* [Paradigms of Artificial Intelligence Programming](https://github.com/norvig/paip-lisp)
 * [Prolog Programming For Artificial Intelligence](http://www.amazon.com/Prolog-Programming-Artificial-Intelligence-Bratko/dp/0201403757)
 * [Concepts, Techniques, and Models of Computer Programming](http://www.info.ucl.ac.be/~pvr/book.html)
-
