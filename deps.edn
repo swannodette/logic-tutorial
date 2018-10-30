@@ -1,0 +1,5 @@
+{:paths     ["src"]
+ :deps      {org.clojure/tools.macro {:mvn/version "0.1.5"}
+             org.clojure/clojure              {:mvn/version "1.9.0"}
+             org.clojure/core.logic {:mvn/version "0.8.11"}
+             }}

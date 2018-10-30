@@ -20,10 +20,10 @@ However, I admit, the most important reason to learn the relational paradigm is 
 First Steps
 ----
 
-1. Install `lein` following [instructions here](http://leiningen.org/#install)
+1.  Install `clojure` following [instructions here](https://clojure.org/guides/getting_started) if using mac or linux. Install `lein` if on Windows (following [instructions here](http://leiningen.org/#install))
 2. `git clone https://github.com/swannodette/logic-tutorial && cd logic-tutorial`
 
-Ok, we're ready to begin. Type `lein repl`, which will drop you into the Clojure prompt. First let's double check that everything went ok. Enter the following at the Clojure REPL:
+Ok, we're ready to begin. Type `clj` (or `lein repl`), which will drop you into the Clojure prompt. First let's double check that everything went ok. Enter the following at the Clojure REPL:
 
 ```clj
 user=> (require 'clojure.core.logic)
@@ -301,10 +301,10 @@ But how to express logical **or**?
   (run* [q]
     (conde
       ((fun q))
-      ((likes q 'Mary)))))
+      ((likes q 'Lucy)))))
 ```
 
-The above does exactly that - find `q` such that `q` is fun *or* `q` likes Mary. This is the essence of how we get multiple answers from `core.logic`.
+The above does exactly that - find `q` such that `q` is fun *or* `q` likes Lucy. This is the essence of how we get multiple answers from `core.logic`.
 
 Magic Tricks
 ----
@@ -423,8 +423,7 @@ Resources
 
 If you found this tutorial interesting and would like to learn more I recommend the following books to further you understanding of the relational paradigm.
 
-* [The Reasoned Schemer](http://mitpress.mit.edu/catalog/item/default.asp?ttype=2&tid=10663)
-* [Paradigms of Artificial Intelligence Programming](http://norvig.com/paip.html)
+* [The Reasoned Schemer](http://mitpress.mit.edu/books/reasoned-schemer-second-edition)
+* [Paradigms of Artificial Intelligence Programming](https://github.com/norvig/paip-lisp)
 * [Prolog Programming For Artificial Intelligence](http://www.amazon.com/Prolog-Programming-Artificial-Intelligence-Bratko/dp/0201403757)
 * [Concepts, Techniques, and Models of Computer Programming](http://www.info.ucl.ac.be/~pvr/book.html)
-
