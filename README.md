@@ -301,10 +301,10 @@ But how to express logical **or**?
   (run* [q]
     (conde
       ((fun q))
-      ((likes q 'Mary)))))
+      ((likes q 'Lucy)))))
 ```
 
-The above does exactly that - find `q` such that `q` is fun *or* `q` likes Mary. This is the essence of how we get multiple answers from `core.logic`.
+The above does exactly that - find `q` such that `q` is fun *or* `q` likes Lucy. This is the essence of how we get multiple answers from `core.logic`.
 
 Magic Tricks
 ----
